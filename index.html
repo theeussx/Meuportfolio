@@ -5,89 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mateus | Portfólio</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Font Awesome para ícones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-WO5sdVZo7vPj5dHLKw6N4RZ9zK0kK+KX1N5wkq3GcUd/XxV+a/Y1hHbA/yq8T7RRkbiR4Xqn5BG30Vp3eR7tuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <button id="toggle-theme">🌙</button>
+  <button id="toggle-theme" aria-label="Alternar tema claro/escuro">🌙</button>
 
-  <!-- HEADER PRINCIPAL -->
   <header class="hero">
     <div class="avatar-container">
-      <img src="avatar.png" alt="Minha foto de perfil" class="avatar" />
+      <img src="avatar.png" alt="Foto de perfil de Mateus Henrique" class="avatar" />
       <h1 class="digitando-nome">
         <span id="typed-name"></span>
       </h1>
-      <p class="subtitulo">Desenvolvedor Web | Bots</p>
     </div>
+    <p>Desenvolvedor Web | Bots</p>
 
-    <!-- BOTÕES PRINCIPAIS -->
-    <div class="botoes-principais">
-      <a href="#projetos" class="botao">🚀 Ver Projetos</a>
-      <a href="Pages/certificado.html" class="botao">📜 Ver Certificados</a>
-      <a href="#contato" class="botao">📩 Contato</a>
-    </div>
+    <nav class="botoes-principais" aria-label="Navegação principal">
+      <a href="#projetos" class="botao">Ver Projetos</a>
+      <a href="Pages/certificado.html" class="botao botao-certificado">Ver Certificados</a>
+    </nav>
   </header>
 
-  <!-- PROJETOS -->
-  <section id="projetos" class="secao">
-    <h2>Projetos</h2>
-    <p>Alguns trabalhos e estudos recentes:</p>
-    <div class="grid-projetos">
-      <div class="card scroll">
-        <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxsG72wAo9EWJR4yQWyJJaDaK1XdUso6cUMpI9hAdPUU_FNs11cY1X284vsHrnWtRw7oqRpN1m9YAg21d_aNKnIo-&format=source&h=210" alt="Projeto 1">
-        <h3>Might Ward</h3>
-        <a href="https://github.com/THZIMX/Might-Ward.git" class="link-projeto">Ver Projeto</a>
+  <main>
+    <section id="projetos" class="secao" aria-labelledby="projetos-titulo">
+      <h2 id="projetos-titulo">Conheça alguns projetos que fiz.</h2>
+      <div class="grid-projetos">
+        <article class="card scroll">
+          <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxsG72wAo9EWJR4yQWyJJaDaK1XdUso6cUMpI9hAdPUU_FNs11cY1X284vsHrnWtRw7oqRpN1m9YAg21d_aNKnIo-&format=source&h=210" alt="Miniatura do projeto Might Ward">
+          <h3>Might Ward</h3>
+          <a href="https://github.com/THZIMX/Might-Ward.git">Ver Projeto</a>
+        </article>
+        <article class="card scroll">
+          <img src="https://raw.githubusercontent.com/THZIMX/Rastroecologico/refs/heads/main/images/favicon.png" alt="Miniatura do projeto Site informativo">
+          <h3>Site informativo</h3>
+          <a href="https://github.com/THZIMX/Rastroecologico.git">Ver Projeto</a>
+        </article>
+        <article class="card scroll">
+          <img src="https://poluicao-do-ar-tcf.vercel.app/favicon.ico" alt="Miniatura do projeto Site TCF poluição do ar">
+          <h3>Site TCF poluição do ar</h3>
+          <a href="https://github.com/THZIMX/Site-Tcf.git">Ver Projeto</a>
+        </article>
       </div>
-      <div class="card scroll">
-        <img src="https://raw.githubusercontent.com/THZIMX/Rastroecologico/refs/heads/main/images/favicon.png" alt="Projeto 2">
-        <h3>Site informativo</h3>
-        <a href="https://github.com/THZIMX/Rastroecologico.git" class="link-projeto">Ver Projeto</a>
+    </section>
+
+    <section id="sobre" class="secao scroll" aria-labelledby="sobre-titulo">
+      <h2 id="sobre-titulo">Sobre Mim</h2>
+      <p>Sou um jovem que programa como passa tempo.</p>
+      <p>Uso um celular para fazer minhas funções e adaptar elas da melhor forma.</p>
+      <p>Tenho lógica básica de JavaScript.</p>
+      <p>Uso banco de dados MySQL.</p>
+      <p>Ganho dinheiro remotamente (home office) com desenvolvimento de sites, bots, entre outros.</p>
+      <p>Abaixo está meu GitHub com todos meus projetos e estatísticas.</p>
+    </section>
+
+    <section id="github-section" class="secao scroll" aria-labelledby="github-titulo">
+      <h2 id="github-titulo">Meu GitHub</h2>
+      <div class="avatar-container">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/250px-GitHub_Invertocat_Logo.svg.png"
+          alt="Logo do GitHub"
+          class="avatar"
+        />
+        <h1 class="digitando-nome-2">
+          <span id="typed-github"></span>
+        </h1>
+       <a href="https://github.com/THZIMX" class="botao">Github</a>
       </div>
-      <div class="card scroll">
-        <img src="https://poluicao-do-ar-tcf.vercel.app/favicon.ico" alt="Projeto 3">
-        <h3>Site TCF poluição do ar</h3>
-        <a href="https://github.com/THZIMX/Site-Tcf.git" class="link-projeto">Ver Projeto</a>
+    </section>
+
+    <section id="contato" class="secao scroll" aria-labelledby="contato-titulo">
+      <h2 id="contato-titulo">Contato</h2>
+      <p>Me chame no Gmail ou Instagram:</p>
+      <div class="social-links">
+        <a href="mailto:mateushenrique6968@gmail.com" class="social-button gmail">Gmail</a>
+        <a href="https://www.instagram.com/theeussx_/" class="social-button instagram">Instagram</a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- SOBRE MIM -->
-  <section id="sobre" class="secao scroll">
-    <h2>Sobre Mim</h2>
-    <p>Sou um jovem que programa como passa tempo.</p>
-    <p>Uso um celular para fazer minhas funções e adaptar elas da melhor forma.</p>
-    <p>Tenho lógica básica de JavaScript.</p>
-    <p>Uso banco de dados MySQL.</p>
-    <p>Ganho dinheiro remotamente (home office) com desenvolvimento de sites, bots, entre outros.</p>
-    <p>Abaixo está meu GitHub com todos meus projetos e estatísticas.</p>
-  </section>
-
-  <!-- GITHUB -->
-  <section class="secao github scroll">
-    <div class="avatar-container">
-      <img 
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/250px-GitHub_Invertocat_Logo.svg.png" 
-        alt="Logo GitHub" 
-        class="avatar" 
-      />
-      <h2>Meu GitHub</h2>
-      <a href="https://github.com/THZIMX" class="botao"><i class="fab fa-github"></i> Ver Perfil</a>
-    </div>
-  </section>
-
-  <!-- CONTATO -->
-  <section id="contato" class="secao scroll">
-    <h2>Contato</h2>
-    <p>Você pode falar comigo pelos links abaixo:</p>
-    <div class="contatos-botoes">
-      <a href="mailto:mateushenrique6968@gmail.com" class="botao"><i class="fas fa-envelope"></i> Gmail</a>
-      <a href="https://github.com/THZIMX" class="botao"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://instagram.com/theeussx_" class="botao"><i class="fab fa-instagram"></i> Instagram</a>
-    </div>
-  </section>
-
-  <!-- RODAPÉ -->
   <footer>
     <p>Feito por Mateus</p>
   </footer>
