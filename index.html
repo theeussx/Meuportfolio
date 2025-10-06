@@ -1,90 +1,69 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mateus | Portfólio</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <button id="toggle-theme" aria-label="Alternar tema claro/escuro">🌙</button>
+<!DOCTYPE html>  <html lang="pt-BR">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Mateus | Portfólio</title>  
+  <link rel="stylesheet" href="style.css" />  
+</head>  
+<body>  
+  <button id="toggle-theme">🌙</button>    <!-- HEADER PRINCIPAL -->    <header class="hero">  
+    <div class="avatar-container">  
+      <img src="avatar.png" alt="Minha foto de perfil" class="avatar" />  
+      <h1 class="digitando-nome">  
+        <span id="typed-name"></span>  
+      </h1>  
+    </div>  
+    <p>Desenvolvedor Web | Bots</p>  <!-- BOTÕES PRINCIPAIS -->  
+<div class="botoes-principais">  
+  <a href="#projetos" class="botao">Ver Projetos</a>  
+  <a href="Pages/certificado.html" class="botao botao-certificado">Ver Certificados</a>  
+</div>
 
-  <header class="hero">
-    <div class="avatar-container">
-      <img src="avatar.png" alt="Foto de perfil de Mateus Henrique" class="avatar" />
-      <h1 class="digitando-nome">
-        <span id="typed-name"></span>
-      </h1>
-    </div>
-    <p>Desenvolvedor Web | Bots</p>
-
-    <nav class="botoes-principais" aria-label="Navegação principal">
-      <a href="#projetos" class="botao">Ver Projetos</a>
-      <a href="Pages/certificado.html" class="botao botao-certificado">Ver Certificados</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="projetos" class="secao" aria-labelledby="projetos-titulo">
-      <h2 id="projetos-titulo">Conheça alguns projetos que fiz.</h2>
-      <div class="grid-projetos">
-        <article class="card scroll">
-          <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxsG72wAo9EWJR4yQWyJJaDaK1XdUso6cUMpI9hAdPUU_FNs11cY1X284vsHrnWtRw7oqRpN1m9YAg21d_aNKnIo-&format=source&h=210" alt="Miniatura do projeto Might Ward">
-          <h3>Might Ward</h3>
-          <a href="https://github.com/THZIMX/Might-Ward.git">Ver Projeto</a>
-        </article>
-        <article class="card scroll">
-          <img src="https://raw.githubusercontent.com/THZIMX/Rastroecologico/refs/heads/main/images/favicon.png" alt="Miniatura do projeto Site informativo">
-          <h3>Site informativo</h3>
-          <a href="https://github.com/THZIMX/Rastroecologico.git">Ver Projeto</a>
-        </article>
-        <article class="card scroll">
-          <img src="https://poluicao-do-ar-tcf.vercel.app/favicon.ico" alt="Miniatura do projeto Site TCF poluição do ar">
-          <h3>Site TCF poluição do ar</h3>
-          <a href="https://github.com/THZIMX/Site-Tcf.git">Ver Projeto</a>
-        </article>
-      </div>
-    </section>
-
-    <section id="sobre" class="secao scroll" aria-labelledby="sobre-titulo">
-      <h2 id="sobre-titulo">Sobre Mim</h2>
-      <p>Sou um jovem que programa como passa tempo.</p>
-      <p>Uso um celular para fazer minhas funções e adaptar elas da melhor forma.</p>
-      <p>Tenho lógica básica de JavaScript.</p>
-      <p>Uso banco de dados MySQL.</p>
-      <p>Ganho dinheiro remotamente (home office) com desenvolvimento de sites, bots, entre outros.</p>
-      <p>Abaixo está meu GitHub com todos meus projetos e estatísticas.</p>
-    </section>
-
-    <section id="github-section" class="secao scroll" aria-labelledby="github-titulo">
-      <h2 id="github-titulo">Meu GitHub</h2>
-      <div class="avatar-container">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/250px-GitHub_Invertocat_Logo.svg.png"
-          alt="Logo do GitHub"
-          class="avatar"
-        />
-        <h1 class="digitando-nome-2">
-          <span id="typed-github"></span>
-        </h1>
-       <a href="https://github.com/THZIMX" class="botao">Github</a>
-      </div>
-    </section>
-
-    <section id="contato" class="secao scroll" aria-labelledby="contato-titulo">
-      <h2 id="contato-titulo">Contato</h2>
-      <p>Me chame no Gmail ou Instagram:</p>
-      <div class="social-links">
-        <a href="mailto:mateushenrique6968@gmail.com" class="social-button gmail">Gmail</a>
-        <a href="https://www.instagram.com/thzimx/" class="social-button instagram">Instagram</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>Feito por Mateus</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+  </header>    <!-- PROJETOS -->    <section id="projetos" class="secao">  
+    <h2>Conheça alguns projetos que fiz.</h2>  
+    <div class="grid-projetos">  
+      <div class="card scroll">  
+        <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxsG72wAo9EWJR4yQWyJJaDaK1XdUso6cUMpI9hAdPUU_FNs11cY1X284vsHrnWtRw7oqRpN1m9YAg21d_aNKnIo-&format=source&h=210" alt="Projeto 1">  
+        <h3>Might Ward</h3>  
+        <a href="https://github.com/THZIMX/Might-Ward.git">Ver Projeto</a>  
+      </div>  
+      <div class="card scroll">  
+        <img src="https://raw.githubusercontent.com/THZIMX/Rastroecologico/refs/heads/main/images/favicon.png" alt="Projeto 2">  
+        <h3>Site informativo</h3>  
+        <a href="https://github.com/THZIMX/Rastroecologico.git">Ver Projeto</a>  
+      </div>  
+      <div class="card scroll">  
+        <img src="https://poluicao-do-ar-tcf.vercel.app/favicon.ico" alt="Projeto 3">  
+        <h3>Site TCF poluiçao do ar</h3>  
+        <a href="https://github.com/THZIMX/Site-Tcf.git">Ver Projeto</a>  
+      </div>  
+    </div>  
+  </section>    <!-- SOBRE MIM -->    <section id="sobre" class="secao scroll">  
+    <h2>Sobre Mim</h2>  
+    <p>Sou um jovem que programa como passa tempo.</p>  
+    <p>Uso um celular para fazer minhas funções e adaptar elas da melhor forma.</p>  
+    <p>Tenho lógica básica de JavaScript.</p>  
+    <p>Uso banco de dados MySQL.</p>  
+    <p>Ganho dinheiro remotamente (home office) com desenvolvimento de sites, bots, entre outros.</p>  
+    <p>Abaixo está meu GitHub com todos meus projetos e estatísticas.</p>  
+  </section>    <!-- GITHUB -->    <header class="hero">  
+    <div class="avatar-container">  
+      <img   
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/250px-GitHub_Invertocat_Logo.svg.png"   
+        alt="Logo GitHub"   
+        class="avatar"   
+      />  
+      <h1 class="digitando-nome-2">  
+        <span id="typed-github"></span>  
+      </h1>  
+     <a href="https://github.com/THZIMX" class="botao">Github</a>  
+    </div>  
+  </header>    <!-- CONTATO -->    <section id="contato" class="secao scroll" aria-labelledby="contato-titulo">  
+    <h2 id="contato-titulo">Contato</h2>  
+    Me chama do Gmail  
+      <a href="mailto:mateushenrique6968@gmail.com">Gmail</a>.  
+    </p>  
+  </section>    <!-- RODAPÉ -->    <footer>  
+    <p>Feito por Mateus</p>  
+  </footer>    <script src="script.js"></script>  </body>  
 </html>
