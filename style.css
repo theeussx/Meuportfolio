@@ -55,63 +55,6 @@ animation: fadeIn 1s ease-out;
 }
 
 .avatar-container {
-:root {
---bg: #0d1117;
---text: #e6edf3;
---accent: #58a6ff;
---card-bg: #161b22;
-}
-
-body.light {
---bg: #f0f0f0;
---text: #111;
---accent: #1e88e5;
---card-bg: #ffffff;
-}
-
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
-
-body {
-background-color: var(--bg);
-color: var(--text);
-font-family: 'Segoe UI', sans-serif;
-line-height: 1.6;
-transition: background 1s, color 0.3s;
-}
-
-a {
-color: var(--accent);
-text-decoration: none;
-}
-
-#toggle-theme {
-position: fixed;
-top: 15px;
-right: 15px;
-background: var(--card-bg);
-color: var(--text);
-border: none;
-padding: 10px;
-border-radius: 50%;
-cursor: pointer;
-font-size: 20px;
-z-index: 1000;
-box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-
-.hero {
-padding: 120px 25px;
-text-align: center;
-background: linear-gradient(to bottom, var(--bg), var(--card-bg));
-animation: fadeIn 1s ease-out;
-}
-
-.avatar-container {
 display: flex;
 flex-direction: column;
 align-items: center;
