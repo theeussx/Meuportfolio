@@ -8,7 +8,7 @@ const projects = [
     image: "https://raw.githubusercontent.com/theeussx/Wardizitto/refs/heads/main/Wardizitto.png",
     technologies: ["Discord.js", "Node.js", "JavaScript"],
     github: "https://github.com/theeussx/Wardizitto",
-    demo: "https://discord.com",
+    demo: "https://discord.com/oauth2/authorize?client_id=1327479686321934458",
   },
   {
     title: "Site SBPC Rastro Ecológico",
