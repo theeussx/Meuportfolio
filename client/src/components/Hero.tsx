@@ -49,7 +49,7 @@ export default function Hero() {
             Mateus
           </h1>
           <p className="text-xl sm:text-2xl font-semibold text-cyan-400 drop-shadow-md">
-            Desenvolvedor Full-Stack
+            Desenvolvedor back-end
           </p>
         </motion.div>
 
@@ -60,7 +60,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.35 }}
           className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed drop-shadow-md"
         >
-          Transformo ideias em código. Especialista em aplicações web modernas, soluções automatizadas e interfaces fluidas. Sempre estudando novas tecnologias e criando projetos que geram impacto real.
+          Transformo ideias em código. Gosto de desenvolver sistemas automatizados e interfaces fluidas. Sempre estudando novas tecnologias e criando projetos que geram impacto real.
         </motion.p>
 
         {/* CTA buttons */}
