@@ -94,7 +94,7 @@ export default function Hero() {
         >
           {[
             { Icon: Github, href: "https://github.com/theeussx", label: "GitHub" },
-            { Icon: Mail, href: "mailto:seuemail@exemplo.com", label: "E-mail" },
+            { Icon: Mail, href: "mailto: mateushenrique6968@gmail.com.com", label: "E-mail" },
             { Icon: Linkedin, href: "https://www.linkedin.com/in/theeussx", label: "LinkedIn" },
           ].map((social, index) => (
             <a
