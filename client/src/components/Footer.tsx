@@ -28,7 +28,7 @@ export default function Footer() {
               Mateus
             </h3>
             <p className="text-gray-400 text-sm">
-              Desenvolvedor Full-Stack criando soluções web modernas e inovadoras.
+              Desenvolvedor back-end criando soluções inovadoras.
             </p>
           </motion.div>
 
