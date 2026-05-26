@@ -3,10 +3,10 @@ import { Github, ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "Wardizito",
-    description: "Um bot Discord completo com funcionalidades avançadas de moderação e entretenimento",
-    image: "https://raw.githubusercontent.com/theeussx/Wardizitto/refs/heads/main/Wardizitto.png",
-    technologies: ["Discord.js", "Node.js", "JavaScript"],
+    title: "Site feira de matematica AR",
+    description: "Um projeto educativo interativo que demonstra como a Realidade Aumentada funciona através de sensores, matemática e cálculos espaciais em tempo real.",
+    image: "https://raw.githubusercontent.com/theeussx/feira-matematica/refs/heads/main/client/public/image/logo.png",
+    technologies: ["CSS", "Kotlin", "TyperScript, React, Tailwind"],
     github: "https://github.com/theeussx/Wardizitto",
   },
   {
