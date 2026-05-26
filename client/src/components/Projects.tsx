@@ -7,7 +7,7 @@ const projects = [
     description: "Um projeto educativo interativo que demonstra como a Realidade Aumentada funciona através de sensores, matemática e cálculos espaciais em tempo real.",
     image: "https://raw.githubusercontent.com/theeussx/feira-matematica/refs/heads/main/client/public/image/logo.png",
     technologies: ["CSS", "Kotlin", "TyperScript, React, Tailwind"],
-    github: "https://github.com/theeussx/Wardizitto",
+    github: "https://github.com/theeussx/feira-matematica",
     demo: "https://feira-matematica.onrender.com",
   },
   {
