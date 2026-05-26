@@ -8,6 +8,7 @@ const projects = [
     image: "https://raw.githubusercontent.com/theeussx/feira-matematica/refs/heads/main/client/public/image/logo.png",
     technologies: ["CSS", "Kotlin", "TyperScript, React, Tailwind"],
     github: "https://github.com/theeussx/Wardizitto",
+    demo: "https://feira-matematica.onrender.com",
   },
   {
     title: "Site SBPC Rastro Ecológico",
