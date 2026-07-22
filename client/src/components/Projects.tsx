@@ -6,7 +6,7 @@ const projects = [
     title: "Site feira de matematica AR",
     description: "Um projeto educativo interativo que demonstra como a Realidade Aumentada funciona através de sensores, matemática e cálculos espaciais em tempo real.",
     image: "https://raw.githubusercontent.com/theeussx/feira-matematica/refs/heads/main/client/public/image/logo.png",
-    technologies: ["CSS", "Kotlin", "TyperScript, React, Tailwind"],
+    technologies: ["CSS", "Kotlin", "TypeScript", "React", "Tailwind"],
     github: "https://github.com/theeussx/feira-matematica",
     demo: "https://feira-de-matematica.vercel.app/",
   },
@@ -14,8 +14,9 @@ const projects = [
     title: "Pterodroid",
     description: "O Pterodroid é um painel de hospedagem pessoal, concebido com a inspiração do Pterodactyl, mas meticulosamente adaptado para operar em ambientes móveis.",
     image: "https://github.com/theeussx/pterodroid/blob/main/pterodroid.png",
-    technologies: ["React", "Java Script", "SQlite", "Nodejs"],
-    github: "https://github.com/theeussx/Rastroecologico",
+    technologies: ["React", "JavaScript", "SQLite", "Node.js"],
+    github: "https://github.com/theeussx/pterodroid",
+    demo: null,
   },
   {
     title: "Site TCF Poluição do Ar",
@@ -26,7 +27,6 @@ const projects = [
     demo: "https://poluicao-do-ar-tcf.vercel.app/",
   },
 ];
-
 export default function Projects() {
   const containerVariants = {
     hidden: { opacity: 0 },
