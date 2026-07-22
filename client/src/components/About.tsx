@@ -99,21 +99,18 @@ export default function About() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Sou um jovem desenvolvedor <span className="text-cyan-400 font-bold">Back-end</span> com foco em sistemas automatizados.
-            </p>
+           <p className="text-gray-300 text-lg leading-relaxed">
+  Sou um jovem desenvolvedor <span className="text-cyan-400 font-bold">Back-end</span> especializado em automação, infraestrutura e gerenciamento de servidores.
+</p>
 
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Busco sempre evoluir como profissional, aprendendo novas
-              tecnologias e aprimorando minha experiência. Gosto de desafios e
-              acredito que cada erro é uma chance de aprender algo novo.
-            </p>
+<p className="text-gray-300 text-lg leading-relaxed">
+  Crio APIs, painéis web e sistemas inteligentes que simplificam tarefas complexas. Tenho forte interesse em Linux e containers, sempre focado em ferramentas que unem alta performance e escalabilidade.
+</p>
 
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Meu objetivo é crescer como desenvolvedor e criar soluções que
-              realmente façam diferença, tanto para empresas quanto para
-              usuários finais.
-            </p>
+<p className="text-gray-300 text-lg leading-relaxed">
+  Busco sempre evoluir aprendendo novas tecnologias para criar soluções robustas, que entreguem uma ótima experiência de uso e façam a diferença para empresas e usuários.
+</p>
+
 
             {/* CTA Button */}
             <motion.div
