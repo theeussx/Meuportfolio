@@ -100,8 +100,7 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-gray-300 text-lg leading-relaxed">
-              Sou um jovem desenvolvedor <span className="text-cyan-400 font-bold">Full-Stack</span> com foco em
-              bots e aplicações web. Tenho maior preferência em back-end
+              Sou um jovem desenvolvedor <span className="text-cyan-400 font-bold">Back-end</span> com foco em sistemas automatizados.
             </p>
 
             <p className="text-gray-300 text-lg leading-relaxed">
