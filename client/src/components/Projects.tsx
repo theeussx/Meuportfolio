@@ -13,7 +13,7 @@ const projects = [
   {
     title: "Pterodroid",
     description: "O Pterodroid é um painel de hospedagem pessoal, concebido com a inspiração do Pterodactyl, mas meticulosamente adaptado para operar em ambientes móveis.",
-    image: "https://github.com/theeussx/pterodroid/blob/main/pterodroid.png",
+    image: "https://raw.githubusercontent.com/theeussx/pterodroid/refs/heads/main/frontend/public/images/logo.jpg",
     technologies: ["React", "JavaScript", "SQLite", "Node.js"],
     github: "https://github.com/theeussx/pterodroid",
     demo: null,
