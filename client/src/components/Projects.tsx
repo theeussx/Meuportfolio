@@ -11,12 +11,11 @@ const projects = [
     demo: "https://feira-de-matematica.vercel.app/",
   },
   {
-    title: "Site SBPC Rastro Ecológico",
-    description: "Site apresentativo utilizado para feira de ciências com tema de sustentabilidade",
-    image: "https://github.com/theeussx/Rastroecologico/blob/main/images/favicon.png?raw=true",
-    technologies: ["HTML5", "CSS3", "Vercel"],
+    title: "Pterodroid",
+    description: "O Pterodroid é um painel de hospedagem pessoal, concebido com a inspiração do Pterodactyl, mas meticulosamente adaptado para operar em ambientes móveis.",
+    image: "https://github.com/theeussx/pterodroid/blob/main/pterodroid.png",
+    technologies: ["React", "Java Script", "SQlite", "Nodejs"],
     github: "https://github.com/theeussx/Rastroecologico",
-    demo: "https://rastro-ecol-gico.vercel.app/",
   },
   {
     title: "Site TCF Poluição do Ar",
