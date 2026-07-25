@@ -6,13 +6,13 @@ type CategoryFilter = "all" | "web" | "backend" | "tools" | "eventos";
 
 const certificates = [
   {
-    title: "Certificado em Desenvolvimento Web",
+    title: "Certificado em Progamador Web",
     issuer: "IFRS",
-    date: "Em andamento",
+    date: "25/01 a 25/07 - 2026",
     category: "web" as const,
-    description: "Certificação completa em desenvolvimento web moderno com HTML, CSS e JavaScript e MySQL",
+    description: "Certificação completa em desenvolvimento web moderno com HTML, CSS, JavaScript e MySQL",
     image: "/images/IFRSLogo.png",
-    certificateUrl: "EM BREVE...",
+    certificateUrl: "/images/Programador_Web.pdf",
   },
   {
     title: "SBPC JOVEM 77⁰",
