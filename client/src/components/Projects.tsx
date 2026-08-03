@@ -20,7 +20,7 @@ const projects = [
   },
   {
     title: "Site TCF Poluição do Ar",
-    description: "Site apresentativo TCF 2025 com foco em conscientização ambiental",
+    description: "Projeto desenvolvido para o TCF 2025 com o objetivo de conscientizar sobre a poluição do ar. O site reúne informações sobre causas, impactos na saúde e no meio ambiente, além de apresentar conteúdos de forma moderna, acessível e interativa.",
     image: "https://raw.githubusercontent.com/theeussx/Tcf/main/public/favicon.ico",
     technologies: ["React", "TypeScript", "Tailwind"],
     github: "https://github.com/theeussx/Tcf",
