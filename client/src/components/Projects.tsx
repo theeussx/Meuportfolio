@@ -13,10 +13,10 @@ const projects = [
   {
     title: "Pterodroid",
     description: "O Pterodroid é um painel de hospedagem pessoal, concebido com a inspiração do Pterodactyl, mas meticulosamente adaptado para operar em ambientes móveis.",
-    image: "https://raw.githubusercontent.com/theeussx/pterodroid/refs/heads/main/frontend/public/images/logo.jpg",
+    image: "https://raw.githubusercontent.com/theeussx/pterodroid/refs/heads/main/pterodroid.png",
     technologies: ["React", "JavaScript", "SQLite", "Node.js"],
     github: "https://github.com/theeussx/pterodroid",
-    demo: null,
+    demo: "https://pterodroid-doc.vercel.app/",
   },
   {
     title: "Site TCF Poluição do Ar",
