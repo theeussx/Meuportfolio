@@ -137,7 +137,7 @@ export default function About() {
             <div className="relative h-96 rounded-lg overflow-hidden neon-border glow-effect">
               <img
                 src="/images/avatar.png"
-                alt="Mateus"
+                alt="Mateus Henrique"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />

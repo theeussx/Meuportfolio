@@ -1,4 +1,4 @@
-import { ChevronDown, Github, Mail, Linkedin } from "lucide-react";
+import { ChevronDown, Github, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -33,7 +33,7 @@ export default function Hero() {
   <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden neon-border glow-effect">
     <img
       src="/images/avatar.png"
-      alt="Mateus"
+      alt="Mateus Henrique"
       className="w-full h-full object-cover"
     />
   </div>
@@ -60,7 +60,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.35 }}
           className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed drop-shadow-md"
         >
-          Transformo ideias em código. Gosto de desenvolver sistemas automatizados e interfaces fluidas. Sempre estudando novas tecnologias e criando projetos que geram impacto real.
+          Gosto de desenvolver sistemas automatizados e interfaces fluidas. Sempre estudando novas tecnologias e criando projetos que fazem a diferença.
         </motion.p>
 
         {/* CTA buttons */}
@@ -95,7 +95,6 @@ export default function Hero() {
           {[
             { Icon: Github, href: "https://github.com/theeussx", label: "GitHub" },
             { Icon: Mail, href: "mailto: mateushenrique6968@gmail.com.com", label: "E-mail" },
-            { Icon: Linkedin, href: "https://www.linkedin.com/in/theeussx", label: "LinkedIn" },
           ].map((social, index) => (
             <a
               key={index}

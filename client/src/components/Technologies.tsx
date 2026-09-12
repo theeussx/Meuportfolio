@@ -147,10 +147,10 @@ export default function Technologies() {
           className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600 animate-pulse">
-            Ferramentas que Uso
+            Ferramentas que utilizo nos meus projetos
           </h2>
           <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            Tecnologias que fazem parte do meu dia a dia como dev. Sempre explorando novas stacks e criando soluções que impactam.
+            Tecnologias que fazem parte dos meus projetos.
           </p>
         </motion.div>
 
