@@ -69,8 +69,8 @@ export default function Contact() {
             Entre em Contato
           </h2>
           <p className="text-gray-400 text-lg">
-            Estou sempre aberto a novas oportunidades e projetos interessantes.
-            Vamos conversar sobre seu próximo projeto!
+            Estou sempre aberto a novas oportunidades de projetos.
+            Vamos conversar sobre sua ideia e colocar em prática!
           </p>
         </motion.div>
 
@@ -129,7 +129,7 @@ export default function Contact() {
             Pronto para começar?
           </h3>
           <p className="text-gray-400 mb-6">
-            Tenho interesse em trabalhos freelance, projetos em equipe e
+            Tenho interesse em trabalhos freelance, projetos em equipe, sistemas para empresas e
             oportunidades de aprendizado. Sinta-se à vontade para entrar em
             contato!
           </p>

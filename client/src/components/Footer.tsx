@@ -25,10 +25,10 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <h3 className="text-xl font-bold text-white mb-2 glow-text">
-              Mateus
+              Mateus Henrique
             </h3>
             <p className="text-gray-400 text-sm">
-              Desenvolvedor back-end criando soluções inovadoras.
+              Desenvolvedor back-end criando sistemas automatizados.
             </p>
           </motion.div>
 

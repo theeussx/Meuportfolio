@@ -17,16 +17,16 @@ const categoryColors = {
   backend:
     "from-purple-500/20 to-pink-500/20 border-purple-500/30 hover:border-purple-500/60",
   tools: "from-orange-500/20 to-red-500/20 border-orange-500/30 hover:border-orange-500/60",
-  "soft-skills":
+  eventos:
     "from-green-500/20 to-emerald-500/20 border-green-500/30 hover:border-green-500/60",
-};
+} satisfies Record<CertificateCardProps["category"], string>;
 
 const categoryLabels = {
   web: "Web Development",
   backend: "Backend",
   tools: "Ferramentas",
-  "eventos": "eventos",
-};
+  eventos: "Eventos",
+} satisfies Record<CertificateCardProps["category"], string>;
 
 export default function CertificateCard({
   title,

@@ -6,7 +6,7 @@ const projects = [
     title: "Site feira de matematica AR",
     description: "Um projeto educativo interativo que demonstra como a Realidade Aumentada funciona através de sensores, matemática e cálculos espaciais em tempo real.",
     image: "https://raw.githubusercontent.com/theeussx/feira-matematica/refs/heads/main/client/public/image/logo.png",
-    technologies: ["CSS", "Kotlin", "TypeScript", "React", "Tailwind"],
+    technologies: ["HTML", "CSS", "Kotlin", "TypeScript", "React", "Tailwind"],
     github: "https://github.com/theeussx/feira-matematica",
     demo: "https://feira-de-matematica.vercel.app/",
   },
@@ -14,17 +14,17 @@ const projects = [
     title: "Pterodroid",
     description: "O Pterodroid é um painel de hospedagem pessoal, concebido com a inspiração do Pterodactyl, mas meticulosamente adaptado para operar em ambientes móveis.",
     image: "https://raw.githubusercontent.com/theeussx/pterodroid/refs/heads/main/pterodroid.png",
-    technologies: ["React", "JavaScript", "SQLite", "Node.js"],
+    technologies: ["TypeScript", "JavaScript", "SQLite", "Shell", "Express", "Tailwind"],
     github: "https://github.com/theeussx/pterodroid",
     demo: "https://pterodroid-doc.vercel.app/",
   },
   {
-    title: "Site TCF Poluição do Ar",
-    description: "Projeto desenvolvido para o TCF 2025 com o objetivo de conscientizar sobre a poluição do ar. O site reúne informações sobre causas, impactos na saúde e no meio ambiente, além de apresentar conteúdos de forma moderna, acessível e interativa.",
-    image: "https://raw.githubusercontent.com/theeussx/Tcf/main/public/favicon.ico",
-    technologies: ["React", "TypeScript", "Tailwind"],
-    github: "https://github.com/theeussx/Tcf",
-    demo: "https://poluicao-do-ar-tcf.vercel.app/",
+    title: "Zittodb",
+    description: "Projeto desenvolvido para quem usa adb e deseja uma interface grafica para gerenciar seus dispositivos Android com Linux. Com ele, você pode visualizar informações do dispositivo, instalar aplicativos, executar comandos adb e muito mais.",
+    image: "https://raw.githubusercontent.com/theeussx/zittodb/refs/heads/main/src-tauri/icons/icon.png",
+    technologies: ["TypeScript", "Rust", "CSS", "JavaScript", "Shell", "Makefile"],
+    github: "https://github.com/theeussx/zittodb",
+    demo: null,
   },
 ];
 export default function Projects() {
@@ -41,7 +41,7 @@ export default function Projects() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   };
 

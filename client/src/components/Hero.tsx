@@ -46,7 +46,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
         >
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-3 tracking-tight text-white drop-shadow-2xl">
-            Mateus
+            Mateus Henrique
           </h1>
           <p className="text-xl sm:text-2xl font-semibold text-cyan-400 drop-shadow-md">
             Desenvolvedor back-end
@@ -60,7 +60,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.35 }}
           className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed drop-shadow-md"
         >
-          Gosto de desenvolver sistemas automatizados e interfaces fluidas. Sempre estudando novas tecnologias e criando projetos que fazem a diferença.
+          Gosto de desenvolver sistemas automatizados e interfaces fluidas. Sempre estudando novas tecnologias e criando projetos úteis para o dia a dia.
         </motion.p>
 
         {/* CTA buttons */}

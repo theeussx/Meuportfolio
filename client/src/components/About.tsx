@@ -27,17 +27,17 @@ const highlights = [
   {
     icon: Briefcase,
     title: "Trabalho Remoto",
-    description: "Ganho dinheiro desenvolvendo sites, bots e soluções personalizadas",
+    description: "Ganho dinheiro desenvolvendo sistemas de gerenciamento e automações para pequenas empresas.",
   },
   {
     icon: Wrench,
-    title: "Ferramentas & Tecnologias",
-    description: "HTML, CSS, JavaScript, React, Node.js, Express, MySQL, Git e APIs",
+    title: "Infraestrutura e Servidores",
+    description: "Experiência com Linux, docker, vps, desenvolvimento back-end, containers e automações.",
   },
   {
     icon: Lightbulb,
     title: "Visão de Futuro",
-    description: "Meu objetivo é crescer como desenvolvedor e criar soluções impactantes",
+    description: "Meu objetivo é desenvolver sistemas úteis e eficientes, que facilitem a vida das pessoas e empresas.",
   },
 ];
 
@@ -85,7 +85,7 @@ export default function About() {
             Sobre Mim
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Conheça um pouco sobre quem sou e minha jornada como desenvolvedor
+            Conheça um pouco sobre quem sou.
           </p>
         </motion.div>
 
@@ -100,15 +100,15 @@ export default function About() {
             className="space-y-6"
           >
            <p className="text-gray-300 text-lg leading-relaxed">
-  Sou um jovem desenvolvedor <span className="text-cyan-400 font-bold">Back-end</span> especializado em automação, infraestrutura e gerenciamento de servidores.
+  Sou um jovem desenvolvedor <span className="text-cyan-400 font-bold">Back-end</span> especializado em automações, infraestrutura e gerenciamento de servidores.
 </p>
 
 <p className="text-gray-300 text-lg leading-relaxed">
-  Crio APIs, painéis web e sistemas inteligentes que simplificam tarefas complexas. Tenho forte interesse em Linux e containers, sempre focado em ferramentas que unem alta performance e escalabilidade.
+  Crio APIs, painéis web e sistemas que simplificam tarefas complexas. Tenho forte interesse em Linux e containers, sempre focado em ferramentas que unem alta performance e escalabilidade.
 </p>
 
 <p className="text-gray-300 text-lg leading-relaxed">
-  Busco sempre evoluir aprendendo novas tecnologias para criar soluções robustas, que entreguem uma ótima experiência de uso e façam a diferença para empresas e usuários.
+  Busco sempre evoluir aprendendo novas tecnologias para criar soluções eficientes, que entreguem uma ótima experiência de uso e façam a diferença para pequenas empresas e usuários.
 </p>
 
 
