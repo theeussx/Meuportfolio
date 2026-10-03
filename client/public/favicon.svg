@@ -1,14 +1,61 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title>Mateus portfolio</title>
-  <desc>Ícone azul com símbolo de código e a letra M</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
   <defs>
-    <linearGradient id="bg" x1="8" y1="4" x2="56" y2="60" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2563EB"/>
-      <stop offset="1" stop-color="#1E40AF"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11161B"/>
+      <stop offset="1" stop-color="#0C1115"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#3982E0"/>
+      <stop offset="1" stop-color="#3276D0"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="#0F172A"/>
-  <rect x="4" y="4" width="56" height="56" rx="13" fill="url(#bg)"/>
-  <path d="m18 25-8 7 8 7M46 25l8 7-8 7" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="m25 43 4-22 5 13 5-13 4 22" fill="none" stroke="#BAE6FD" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bg)"/>
+
+  <!-- T -->
+  <path fill="url(#blue)" d="
+    M41 120
+    H177
+    Q181 120 181 124
+    V150
+    Q181 154 177 154
+    H131
+    V289
+    Q131 293 127 293
+    H93
+    Q89 293 89 289
+    V154
+    H41
+    Q36 154 36 150
+    V124
+    Q36 120 41 120 Z"/>
+
+  <!-- H -->
+  <path fill="url(#blue)" d="
+    M204 120
+    H236
+    Q240 120 240 124
+    V181
+    Q240 185 244 185
+    H303
+    Q307 185 307 181
+    V124
+    Q307 120 311 120
+    H344
+    Q348 120 348 124
+    V289
+    Q348 293 344 293
+    H311
+    Q307 293 307 289
+    V227
+    Q307 223 303 223
+    H244
+    Q240 223 240 227
+    V289
+    Q240 293 236 293
+    H204
+    Q200 293 200 289
+    V124
+    Q200 120 204 120 Z"/>
 </svg>
