@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Github, Instagram, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const contactLinks = [
   {
@@ -26,6 +27,7 @@ const contactLinks = [
 ];
 
 export default function Contact() {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,16 +48,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contato" className="py-20 bg-black relative overflow-hidden">
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: "url('/images/tech-pattern.png')",
-          backgroundSize: "400px 400px",
-        }}
-      />
-
+    <section id="contato" className="relative overflow-hidden bg-transparent py-20">
       <div className="container max-w-4xl mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
@@ -66,11 +59,10 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
-            Entre em Contato
+            {t.contact.title}
           </h2>
           <p className="text-gray-400 text-lg">
-            Estou sempre aberto a novas oportunidades de projetos.
-            Vamos conversar sobre sua ideia e colocar em prática!
+            {t.contact.description}
           </p>
         </motion.div>
 
@@ -108,7 +100,7 @@ export default function Contact() {
                   </p>
 
                   <div className="mt-4 pt-4 border-t border-slate-700 flex items-center gap-2 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="text-sm font-medium">Enviar</span>
+                    <span className="text-sm font-medium">{t.contact.send}</span>
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -123,21 +115,19 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center p-8 rounded-lg border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 backdrop-blur neon-border"
+          className="text-center p-8 rounded-lg border border-slate-800 bg-slate-900/40"
         >
           <h3 className="text-2xl font-bold text-white mb-4">
-            Pronto para começar?
+            {t.contact.ready}
           </h3>
           <p className="text-gray-400 mb-6">
-            Tenho interesse em trabalhos freelance, projetos em equipe, sistemas para empresas e
-            oportunidades de aprendizado. Sinta-se à vontade para entrar em
-            contato!
+            {t.contact.invitation}
           </p>
           <a
             href="mailto:mateushenrique6968@gmail.com"
-            className="inline-block px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-black font-bold rounded-lg transition-all duration-300 neon-border hover:glow-effect"
+            className="inline-block px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition-colors duration-200"
           >
-            Enviar Email →
+            {t.contact.sendEmail}
           </a>
         </motion.div>
       </div>

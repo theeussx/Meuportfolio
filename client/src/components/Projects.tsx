@@ -1,26 +1,21 @@
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const projects = [
   {
-    title: "Site feira de matematica AR",
-    description: "Um projeto educativo interativo que demonstra como a Realidade Aumentada funciona através de sensores, matemática e cálculos espaciais em tempo real.",
     image: "https://raw.githubusercontent.com/theeussx/feira-matematica/refs/heads/main/client/public/image/logo.png",
     technologies: ["HTML", "CSS", "Kotlin", "TypeScript", "React", "Tailwind"],
     github: "https://github.com/theeussx/feira-matematica",
     demo: "https://feira-de-matematica.vercel.app/",
   },
   {
-    title: "Pterodroid",
-    description: "O Pterodroid é um painel de hospedagem pessoal, concebido com a inspiração do Pterodactyl, mas meticulosamente adaptado para operar em ambientes móveis.",
     image: "https://raw.githubusercontent.com/theeussx/pterodroid/refs/heads/main/pterodroid.png",
     technologies: ["TypeScript", "JavaScript", "SQLite", "Shell", "Express", "Tailwind"],
     github: "https://github.com/theeussx/pterodroid",
     demo: "https://pterodroid-doc.vercel.app/",
   },
   {
-    title: "Zittodb",
-    description: "Projeto desenvolvido para quem usa adb e deseja uma interface grafica para gerenciar seus dispositivos Android com Linux. Com ele, você pode visualizar informações do dispositivo, instalar aplicativos, executar comandos adb e muito mais.",
     image: "https://raw.githubusercontent.com/theeussx/zittodb/refs/heads/main/src-tauri/icons/icon.png",
     technologies: ["TypeScript", "Rust", "CSS", "JavaScript", "Shell", "Makefile"],
     github: "https://github.com/theeussx/zittodb",
@@ -28,6 +23,7 @@ const projects = [
   },
 ];
 export default function Projects() {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -48,13 +44,8 @@ export default function Projects() {
   return (
     <section
       id="projetos"
-      className="py-20 md:py-24 bg-black relative overflow-hidden border-t border-cyan-950/50"
+      className="relative overflow-hidden border-t border-cyan-950/50 bg-transparent py-20 md:py-24"
     >
-      {/* Fundo sutil cyber (opcional, pra dar textura) */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/10 via-transparent to-purple-950/5" />
-      </div>
-
       <div className="container max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
@@ -65,10 +56,10 @@ export default function Projects() {
           className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600 animate-pulse">
-            Projetos em Destaque
+            {t.projects.title}
           </h2>
           <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            Alguns dos meus trabalhos mais recentes que demonstram minhas habilidades em desenvolvimento web, automação e soluções criativas.
+            {t.projects.description}
           </p>
         </motion.div>
 
@@ -94,7 +85,7 @@ export default function Projects() {
                   {project.image ? (
                     <img
                       src={project.image}
-                      alt={project.title}
+                      alt={t.projects.items[index].title}
                       className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                       loading="lazy"
                     />
@@ -109,11 +100,11 @@ export default function Projects() {
                 {/* Conteúdo */}
                 <div className="p-6 md:p-7 flex-1 flex flex-col">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors duration-300">
-                    {project.title}
+                    {t.projects.items[index].title}
                   </h3>
 
                   <p className="text-gray-400 text-base mb-5 leading-relaxed flex-1">
-                    {project.description}
+                    {t.projects.items[index].description}
                   </p>
 
                   {/* Tecnologias */}
@@ -145,7 +136,7 @@ export default function Projects() {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-600/20 hover:bg-cyan-600/40 border border-cyan-600/40 hover:border-cyan-500 text-cyan-300 rounded-lg transition-all duration-300 font-medium shadow-sm hover:shadow-cyan-500/30"
+                        className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-950/40 hover:bg-cyan-900/50 border border-cyan-900 hover:border-cyan-700 text-cyan-300 rounded-lg transition-colors duration-200 font-medium"
                       >
                         <ExternalLink className="w-5 h-5" />
                         Demo
@@ -170,10 +161,10 @@ export default function Projects() {
             href="https://github.com/theeussx"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-700 hover:to-cyan-600 rounded-xl shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 transform hover:-translate-y-1"
+            className="inline-flex items-center gap-3 px-8 py-4 text-lg font-semibold text-white bg-cyan-600 hover:bg-cyan-500 rounded-lg transition-colors duration-200"
           >
             <Github className="w-5 h-5" />
-            Ver Todos os Projetos no GitHub →
+            {t.projects.allProjects}
           </a>
         </motion.div>
       </div>

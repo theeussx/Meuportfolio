@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface TechCardProps {
-  icon: LucideIcon;
+  icon: IconType;
+  iconColor: string;
   name: string;
   description: string;
   category: "frontend" | "backend" | "tools";
@@ -16,10 +18,13 @@ const categoryColors = {
 
 export default function TechCard({
   icon: Icon,
+  iconColor,
   name,
   description,
   category,
 }: TechCardProps) {
+  const { t } = useLanguage();
+
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -5 }}
@@ -31,7 +36,7 @@ export default function TechCard({
       >
         {/* Ícone */}
         <div className="mb-4 inline-block p-3 rounded-lg bg-slate-800 group-hover:bg-slate-700 transition-colors">
-          <Icon className="w-6 h-6 text-cyan-400 group-hover:text-cyan-300" />
+          <Icon className="w-6 h-6" style={{ color: iconColor }} aria-hidden="true" />
         </div>
 
         {/* Nome */}
@@ -45,13 +50,10 @@ export default function TechCard({
         {/* Indicador de categoria */}
         <div className="mt-4 pt-4 border-t border-slate-700/50">
           <span className="text-xs font-mono text-gray-500 uppercase">
-            {category === "frontend" && "Frontend"}
-            {category === "backend" && "Backend"}
-            {category === "tools" && "Ferramentas"}
+            {t.technologies.categories[category]}
           </span>
         </div>
       </div>
     </motion.div>
   );
 }
-

@@ -7,41 +7,12 @@ import {
   Wrench,
   Lightbulb,
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const highlights = [
-  {
-    icon: Smartphone,
-    title: "Desenvolvimento Responsivo",
-    description: "Adapto projetos para funcionar perfeitamente em celulares e desktops",
-  },
-  {
-    icon: Code,
-    title: "Lógica em JavaScript",
-    description: "Da lógica básica até manipulação de dados e automações",
-  },
-  {
-    icon: Database,
-    title: "Banco de Dados",
-    description: "Experiência com MySQL e organização de dados estruturados",
-  },
-  {
-    icon: Briefcase,
-    title: "Trabalho Remoto",
-    description: "Ganho dinheiro desenvolvendo sistemas de gerenciamento e automações para pequenas empresas.",
-  },
-  {
-    icon: Wrench,
-    title: "Infraestrutura e Servidores",
-    description: "Experiência com Linux, docker, vps, desenvolvimento back-end, containers e automações.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Visão de Futuro",
-    description: "Meu objetivo é desenvolver sistemas úteis e eficientes, que facilitem a vida das pessoas e empresas.",
-  },
-];
+const highlightIcons = [Smartphone, Code, Database, Briefcase, Wrench, Lightbulb];
 
 export default function About() {
+  const { language, t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,16 +33,7 @@ export default function About() {
   };
 
   return (
-    <section id="sobre" className="py-20 bg-black relative overflow-hidden">
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: "url('/images/tech-pattern.png')",
-          backgroundSize: "400px 400px",
-        }}
-      />
-
+    <section id="sobre" className="relative overflow-hidden bg-transparent py-20">
       <div className="container max-w-6xl mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
@@ -82,10 +44,10 @@ export default function About() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
-            Sobre Mim
+            {t.about.title}
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Conheça um pouco sobre quem sou.
+            {t.about.subtitle}
           </p>
         </motion.div>
 
@@ -99,18 +61,21 @@ export default function About() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-           <p className="text-gray-300 text-lg leading-relaxed">
-  Sou um jovem desenvolvedor <span className="text-cyan-400 font-bold">Back-end</span> especializado em automações, infraestrutura e gerenciamento de servidores.
-</p>
-
-<p className="text-gray-300 text-lg leading-relaxed">
-  Crio APIs, painéis web e sistemas que simplificam tarefas complexas. Tenho forte interesse em Linux e containers, sempre focado em ferramentas que unem alta performance e escalabilidade.
-</p>
-
-<p className="text-gray-300 text-lg leading-relaxed">
-  Busco sempre evoluir aprendendo novas tecnologias para criar soluções eficientes, que entreguem uma ótima experiência de uso e façam a diferença para pequenas empresas e usuários.
-</p>
-
+            {t.about.paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-gray-300 text-lg leading-relaxed">
+                {index === 0
+                  ? paragraph.split(/(back-end)/i).map((part, partIndex) =>
+                      part.toLowerCase() === "back-end" ? (
+                        <span key={partIndex} className="text-cyan-400 font-bold">
+                          {language === "pt" ? "Back-end" : "back-end"}
+                        </span>
+                      ) : (
+                        part
+                      ),
+                    )
+                  : paragraph}
+              </p>
+            ))}
 
             {/* CTA Button */}
             <motion.div
@@ -119,9 +84,9 @@ export default function About() {
             >
               <a
                 href="#contato"
-                className="inline-block px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-black font-bold rounded-lg transition-all duration-300 neon-border hover:glow-effect"
+                className="inline-block px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition-colors duration-200"
               >
-                Vamos Conversar →
+                {t.about.contact}
               </a>
             </motion.div>
           </motion.div>
@@ -153,8 +118,8 @@ export default function About() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {highlights.map((highlight, index) => {
-            const Icon = highlight.icon;
+          {t.about.highlights.map((highlight, index) => {
+            const Icon = highlightIcons[index];
             return (
               <motion.div key={index} variants={itemVariants}>
                 <div className="p-6 rounded-lg border border-slate-800 hover:border-cyan-500/30 bg-slate-900/30 backdrop-blur hover:glow-effect transition-all duration-300 group">

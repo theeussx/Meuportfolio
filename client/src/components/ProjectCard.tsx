@@ -75,7 +75,7 @@ export default function ProjectCard({
                 href={liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-600/20 hover:bg-cyan-600/40 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 rounded-lg transition-all duration-300 font-medium shadow-sm hover:shadow-cyan-500/30"
+                className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-950/40 hover:bg-cyan-900/50 border border-cyan-900 hover:border-cyan-700 text-cyan-300 rounded-lg transition-colors duration-200 font-medium"
               >
                 <ExternalLink className="w-4 h-4" />
                 Demo

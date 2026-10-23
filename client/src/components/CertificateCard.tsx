@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Award, ExternalLink, Download } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CertificateCardProps {
   title: string;
@@ -21,13 +22,6 @@ const categoryColors = {
     "from-green-500/20 to-emerald-500/20 border-green-500/30 hover:border-green-500/60",
 } satisfies Record<CertificateCardProps["category"], string>;
 
-const categoryLabels = {
-  web: "Web Development",
-  backend: "Backend",
-  tools: "Ferramentas",
-  eventos: "Eventos",
-} satisfies Record<CertificateCardProps["category"], string>;
-
 export default function CertificateCard({
   title,
   issuer,
@@ -37,6 +31,7 @@ export default function CertificateCard({
   certificateUrl,
   description,
 }: CertificateCardProps) {
+  const { t } = useLanguage();
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -73,7 +68,7 @@ export default function CertificateCard({
           {/* Categoria Badge */}
           <div className="mb-3 inline-block">
             <span className="px-3 py-1 text-xs font-mono bg-slate-800/50 border border-slate-700 text-cyan-400 rounded-full">
-              {categoryLabels[category]}
+              {t.certificates.categoryLabels[category]}
             </span>
           </div>
 
@@ -103,7 +98,7 @@ export default function CertificateCard({
                 className="flex items-center justify-center gap-2 px-4 py-2 bg-slate-800 hover:bg-cyan-500/20 border border-slate-700 hover:border-cyan-500/50 text-cyan-400 rounded transition-all duration-300 group/link"
               >
                 <ExternalLink className="w-4 h-4" />
-                <span className="text-sm font-medium">Ver Certificado</span>
+                <span className="text-sm font-medium">{t.certificates.viewCertificate}</span>
               </a>
             </div>
           )}

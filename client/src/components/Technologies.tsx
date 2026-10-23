@@ -1,110 +1,146 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import {
-  Code2,
-  Palette,
-  Zap,
-  Database,
-  Server,
-  Smartphone,
-  GitBranch,
-  Terminal,
-  Cpu,
-  Package,
-  Layers,
-  Shield,
-} from "lucide-react";
+  SiCss,
+  SiDocker,
+  SiExpress,
+  SiGit,
+  SiGnubash,
+  SiHtml5,
+  SiJavascript,
+  SiLinux,
+  SiMysql,
+  SiNodedotjs,
+  SiOpenapiinitiative,
+  SiReact,
+  SiRust,
+  SiSqlite,
+  SiTailwindcss,
+  SiAndroid,
+  SiTypescript,
+} from "react-icons/si";
 import TechCard from "./TechCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type CategoryFilter = "all" | "frontend" | "backend" | "tools";
 
 const technologies = [
   // Frontend
   {
-    icon: Code2,
+    icon: SiHtml5,
+    iconColor: "#E34F26",
     name: "HTML5",
-    description: "Estrutura semântica e acessível para web",
     category: "frontend" as const,
   },
   {
-    icon: Palette,
+    icon: SiCss,
+    iconColor: "#1572B6",
     name: "CSS3",
-    description: "Estilos modernos, animações e layouts responsivos",
     category: "frontend" as const,
   },
   {
-    icon: Zap,
+    icon: SiJavascript,
+    iconColor: "#F7DF1E",
     name: "JavaScript",
-    description: "Lógica interativa e manipulação de DOM",
     category: "frontend" as const,
   },
   {
-    icon: Shield,
+    icon: SiTypescript,
+    iconColor: "#3178C6",
     name: "TypeScript",
-    description: "Type safety e melhor experiência de desenvolvimento",
     category: "frontend" as const,
   },
   {
-    icon: Layers,
+    icon: SiReact,
+    iconColor: "#61DAFB",
     name: "React",
-    description: "Interfaces dinâmicas e componentes reutilizáveis",
     category: "frontend" as const,
   },
   {
-    icon: Palette,
+    icon: SiTailwindcss,
+    iconColor: "#06B6D4",
     name: "Tailwind CSS",
-    description: "Estilização rápida com utility-first CSS",
     category: "frontend" as const,
   },
   // Backend
   {
-    icon: Server,
+    icon: SiNodedotjs,
+    iconColor: "#5FA04E",
     name: "Node.js",
-    description: "Runtime JavaScript para backend ágil",
     category: "backend" as const,
   },
   {
-    icon: Database,
+    icon: SiJavascript,
+    iconColor: "#F7DF1E",
+    name: "JavaScript",
+    category: "backend" as const,
+  },
+  {
+    icon: SiTypescript,
+    iconColor: "#3178C6",
+    name: "TypeScript",
+    category: "backend" as const,
+  },
+  {
+    icon: SiMysql,
+    iconColor: "#4479A1",
     name: "MySQL",
-    description: "Banco de dados relacional estruturado",
     category: "backend" as const,
   },
   {
-    icon: Package,
+    icon: SiExpress,
+    iconColor: "#E5E7EB",
     name: "Express.js",
-    description: "Framework web minimalista e flexível",
     category: "backend" as const,
   },
   // Tools
   {
-    icon: GitBranch,
+    icon: SiGit,
+    iconColor: "#F05032",
     name: "Git & GitHub",
-    description: "Controle de versão e colaboração",
     category: "tools" as const,
   },
   {
-    icon: Terminal,
+    icon: SiAndroid,
+    iconColor: "#E5E7EB",
     name: "Termux",
-    description: "Ambiente Linux no Android para scripts",
     category: "tools" as const,
   },
   {
-    icon: Cpu,
+    icon: SiOpenapiinitiative,
+    iconColor: "#6BA539",
     name: "APIs REST",
-    description: "Integração e comunicação entre serviços",
     category: "tools" as const,
   },
-];
-
-const categories: { value: CategoryFilter; label: string }[] = [
-  { value: "all", label: "Todos" },
-  { value: "frontend", label: "Frontend" },
-  { value: "backend", label: "Backend" },
-  { value: "tools", label: "Ferramentas" },
+  {
+    icon: SiDocker,
+    iconColor: "#2496ED",
+    name: "Docker",
+    category: "tools" as const,
+  },
+  {
+    icon: SiLinux,
+    iconColor: "#FCC624",
+    name: "Linux",
+    category: "tools" as const,
+  },
+  {
+    icon: SiGnubash,
+    iconColor: "#4EAA25",
+    name: "Shell",
+    category: "tools" as const,
+  },
 ];
 
 export default function Technologies() {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
+  const categories: { value: CategoryFilter; label: string }[] = [
+    { value: "all", label: t.technologies.categories.all },
+    { value: "frontend", label: t.technologies.categories.frontend },
+    { value: "backend", label: t.technologies.categories.backend },
+    { value: "tools", label: t.technologies.categories.tools },
+  ];
 
   const filteredTechnologies =
     activeCategory === "all"
@@ -132,15 +168,8 @@ export default function Technologies() {
   return (
     <section
       id="tecnologias"
-      className="py-20 md:py-24 bg-black relative overflow-hidden border-t border-cyan-950/50"
+      className="relative overflow-hidden border-t border-cyan-950/50 bg-transparent py-20 md:py-24"
     >
-      
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/15 via-transparent to-purple-950/10" />
-        {/* Se quiser manter o pattern: */}
-        {/* <div style={{ backgroundImage: "url('/images/tech-pattern.png')", backgroundSize: "400px" }} className="w-full h-full opacity-5" /> */}
-      </div>
-
       <div className="container max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <motion.div
@@ -151,10 +180,10 @@ export default function Technologies() {
           className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600 animate-pulse">
-            Ferramentas que utilizo nos meus projetos
+            {t.technologies.title}
           </h2>
           <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            Tecnologias que fazem parte dos meus projetos.
+            {t.technologies.description}
           </p>
         </motion.div>
 
@@ -195,8 +224,11 @@ export default function Technologies() {
           >
             {filteredTechnologies.length > 0 ? (
               filteredTechnologies.map((tech, index) => (
-                <motion.div key={index} variants={itemVariants}>
-                  <TechCard {...tech} />
+                <motion.div key={tech.name + tech.category} variants={itemVariants}>
+                  <TechCard
+                    {...tech}
+                    description={t.technologies.descriptions[technologies.indexOf(tech)]}
+                  />
                 </motion.div>
               ))
             ) : (
@@ -204,7 +236,7 @@ export default function Technologies() {
                 variants={itemVariants}
                 className="col-span-full text-center py-12 text-gray-400 text-lg"
               >
-                Nenhuma tecnologia nesta categoria no momento.
+                {t.technologies.empty}
               </motion.div>
             )}
           </motion.div>
@@ -219,10 +251,10 @@ export default function Technologies() {
           className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-20 pt-16 border-t border-cyan-950/50"
         >
           {[
-            { label: "Tecnologias", value: "12+" },
-            { label: "Projetos", value: "10+" },
-            { label: "Anos Exp.", value: "1+" },
-            { label: "Clientes", value: "10+" },
+            { label: t.technologies.stats[0], value: "14+" },
+            { label: t.technologies.stats[1], value: "20+" },
+            { label: t.technologies.stats[2], value: "1+" },
+            { label: t.technologies.stats[3], value: "14+" },
           ].map((stat, index) => (
             <motion.div
               key={index}

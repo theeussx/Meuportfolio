@@ -1,25 +1,20 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import CertificateCard from "./CertificateCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 type CategoryFilter = "all" | "web" | "backend" | "tools" | "eventos";
 
 const certificates = [
   {
-    title: "Certificado em Progamador Web",
     issuer: "IFRS",
-    date: "25/01 a 25/07 - 2026",
     category: "web" as const,
-    description: "Certificado em desenvolvimento web com HTML, CSS, JavaScript e MySQL",
     image: "/images/IFRSLogo.png",
     certificateUrl: "/images/Programador_Web.pdf",
   },
   {
-    title: "SBPC JOVEM 77⁰",
     issuer: "UFRPE",
-    date: "14 a 19 de julho - 2025",
     category: "eventos" as const,
-    description: "Participação e aprovação da feira de ciências SBPC JOVEM na UFRPE.",
     image: "/images/SBPCLogo.png",
     certificateUrl: "/images/SBPC.png",
   },
@@ -75,16 +70,14 @@ const certificates = [
 */
 ];
 
-const categories: { value: CategoryFilter; label: string }[] = [
-  { value: "all", label: "Todos" },
-  { value: "web", label: "Web Development" },
-  { value: "backend", label: "Backend" },
-  { value: "tools", label: "Ferramentas" },
-  { value: "eventos", label: "eventos" },
-];
-
 export default function Certificates() {
+  const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
+  const categories: { value: CategoryFilter; label: string }[] = [
+    { value: "all", label: t.certificates.categories.all },
+    { value: "web", label: t.certificates.categories.web },
+    { value: "eventos", label: t.certificates.categories.events },
+  ];
 
   const filteredCertificates =
     activeCategory === "all"
@@ -118,17 +111,8 @@ export default function Certificates() {
   return (
     <section
       id="certificados"
-      className="py-20 bg-black relative overflow-hidden"
+      className="relative overflow-hidden bg-transparent py-20"
     >
-      {/* Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: "url('/images/tech-pattern.png')",
-          backgroundSize: "400px 400px",
-        }}
-      />
-
       <div className="container max-w-6xl mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
@@ -139,11 +123,10 @@ export default function Certificates() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
-            Certificações & Credenciais
+            {t.certificates.title}
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Certificações que comprovam meu comprometimento com o aprendizado
-            contínuo e excelência profissional.
+            {t.certificates.description}
           </p>
         </motion.div>
 
@@ -159,11 +142,10 @@ export default function Certificates() {
             <motion.button
               key={category.value}
               onClick={() => setActiveCategory(category.value)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.98 }}
               className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                 activeCategory === category.value
-                  ? "bg-cyan-500 text-black border border-cyan-500 glow-effect"
+                  ? "bg-cyan-600 text-white border border-cyan-600"
                   : "border border-slate-700 text-gray-400 hover:border-cyan-500/50 hover:text-cyan-400"
               }`}
             >
@@ -182,9 +164,14 @@ export default function Certificates() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filteredCertificates.length > 0 ? (
-              filteredCertificates.map((cert, index) => (
-                <motion.div key={index} variants={itemVariants}>
-                  <CertificateCard {...cert} />
+              filteredCertificates.map((cert) => (
+                <motion.div key={cert.issuer} variants={itemVariants}>
+                  <CertificateCard
+                    {...cert}
+                    title={t.certificates.items[certificates.indexOf(cert)].title}
+                    date={t.certificates.items[certificates.indexOf(cert)].date}
+                    description={t.certificates.items[certificates.indexOf(cert)].description}
+                  />
                 </motion.div>
               ))
             ) : (
@@ -193,7 +180,7 @@ export default function Certificates() {
                 className="col-span-full text-center py-12"
               >
                 <p className="text-gray-400 text-lg">
-                  Nenhum certificado nesta categoria no momento.
+                  {t.certificates.empty}
                 </p>
               </motion.div>
             )}
@@ -209,10 +196,10 @@ export default function Certificates() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-20 border-t border-slate-800"
         >
           {[
-            { label: "Certificados", value: certificates.length },
-            { label: "Categorias", value: categories.length - 1 },
-            { label: "Horas de Estudo", value: "300+" },
-            { label: "Plataformas", value: "8+" },
+            { label: t.certificates.stats[0], value: certificates.length },
+            { label: t.certificates.stats[1], value: categories.length - 1 },
+            { label: t.certificates.stats[2], value: "300+" },
+            { label: t.certificates.stats[3], value: "8+" },
           ].map((stat, index) => (
             <motion.div
               key={index}
