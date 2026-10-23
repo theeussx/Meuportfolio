@@ -120,7 +120,7 @@ const technologies = [
   },
   {
     icon: SiLinux,
-    iconColor: "#FCC624",
+    iconColor: "#E5E7EB",
     name: "Linux",
     category: "tools" as const,
   },

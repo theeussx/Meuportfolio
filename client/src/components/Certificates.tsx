@@ -199,7 +199,7 @@ export default function Certificates() {
             { label: t.certificates.stats[0], value: certificates.length },
             { label: t.certificates.stats[1], value: categories.length - 1 },
             { label: t.certificates.stats[2], value: "300+" },
-            { label: t.certificates.stats[3], value: "8+" },
+            { label: t.certificates.stats[3], value: "5+" },
           ].map((stat, index) => (
             <motion.div
               key={index}
