@@ -1,89 +1,49 @@
-# Meu Portfólio
+# Theeussx Portfolio 2.0
 
-Portfólio pessoal desenvolvido com React, TypeScript, Vite e Tailwind CSS para apresentar projetos, tecnologias, certificações e informações de contato.
+Portfólio de Mateus Henrique, desenvolvedor web e automações em Pernambuco. A página reúne estudos de caso, serviços, competências, atividade pública, certificados e um formulário de orçamento em português e inglês.
 
-## Visão geral
+## Executar localmente
 
-Este projeto é uma landing page moderna e responsiva, com experiência de usuário focada em apresentar a minha trajetória profissional, conhecimentos técnicos e forma de contato.
+Use Node.js 22 e a versão do pnpm indicada em `package.json`. Se o pnpm não estiver no PATH, substitua `pnpm` por `corepack pnpm`.
 
-## Tecnologias
-
-- React 19
-- TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Wouter
-- Radix UI
-
-## Funcionalidades
-
-- Hero section com apresentação pessoal
-- Seção de projetos
-- Lista de tecnologias
-- Certificações e experiências
-- Sobre mim
-- Formulário/área de contato
-- Tema claro/escuro
-- Suporte a múltiplos idiomas
-
-## Estrutura do projeto
-
-```text
-.
-├── client/
-│   ├── public/
-│   └── src/
-├── patches/
-├── README.md
-├── README_VERCEL.md
-├── components.json
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── vercel.json
-```
-
-## Pré-requisitos
-
-- Node.js 18+
-- pnpm (recomendado)
-
-## Instalação
-
-```bash
-pnpm install
-```
-
-## Executando localmente
-
-```bash
+```sh
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-A aplicação estará disponível em `http://localhost:5173` por padrão.
+O Vite imprime a URL local. Para validar a versão de produção, execute:
 
-## Build de produção
-
-```bash
+```sh
+pnpm check
+pnpm test
 pnpm build
+pnpm preview
 ```
 
-## Scripts disponíveis
+A build gera os arquivos estáticos em `dist/`. O HTML inicial em português é renderizado durante a build. A aplicação React hidrata a página no navegador e recupera as preferências de idioma e tema.
 
-```bash
-pnpm dev      # inicia o ambiente de desenvolvimento
-pnpm build    # gera a build de produção
-pnpm preview  # preview da build
-pnpm check    # valida tipos TypeScript
-pnpm format   # formata o código com Prettier
-```
+## Publicar na Vercel
 
-## Licença
+Importe o repositório com a raiz no diretório do projeto. Selecione o preset Vite e o Node.js 22.x. A configuração versionada em `vercel.json` define a saída `dist` e os cabeçalhos de segurança. O comando de build é `pnpm build`; o lockfile fixa as dependências. A publicação pode partir de um deployment de prévia para revisar o resultado antes de promovê-lo.
 
-Este projeto está licenciado sob a MIT License. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+Revise a URL canônica, os metadados sociais, os dados estruturados e o sitemap se alterar o domínio público. A build inclui uma página estática `404.html`.
 
-## Observação
+## Orçamentos e privacidade
 
-Se você for publicar este repositório em um serviço como GitHub, vale revisar informações pessoais como e-mail, links sociais, imagens e texto de apresentação antes da publicação.
+O formulário valida os campos no navegador e prepara um e-mail em português ou inglês com o briefing. O visitante pode abrir o aplicativo de e-mail ou copiar o texto. O portfólio não coleta, armazena ou envia o conteúdo para um servidor. O link de contato direto também funciona com JavaScript desativado.
 
+Para ativar futuramente o envio pelo próprio site, configure um remetente verificado em um provedor de e-mail e mantenha a chave de API nas variáveis privadas da Vercel. Adicione uma função Vercel de mesma origem que reaplique as regras de `client/src/lib/quote.ts`, limite o tamanho do corpo e a taxa de solicitações, fixe o destinatário no servidor e evite registrar o conteúdo dos briefings. Atualize o aviso de privacidade e confirme o envio na interface somente após a aceitação pelo provedor. Nenhuma credencial é necessária para a versão atual.
+
+## Organização
+
+- `client/src/components/` reúne as seções, os controles Arc e os componentes shadcn.
+- `client/src/content/` centraliza identidade, navegação, experiências e textos bilíngues.
+- `client/src/index.css` define os tokens, temas e layouts responsivos.
+- `client/src/lib/quote.ts` concentra validação, traduções e geração do briefing.
+- `client/public/media/` contém retrato, capturas reais dos projetos e imagem social.
+- `scripts/prerender.mjs` gera o HTML público e a página de erro.
+- `tests/quote.test.mjs` cobre campos opcionais, limites, validação e codificação da mensagem.
+
+O registry da Arc está em `components.json`. `ThemeSwitch`, `CopyButton` e o `Button` de suporte foram adaptados aos tokens do projeto e usam transições CSS com suporte à preferência de movimento reduzido. A licença da Arc e a da fonte Geist acompanham os respectivos arquivos.
+
+Consulte [LICENSE](LICENSE) para a licença do portfólio.

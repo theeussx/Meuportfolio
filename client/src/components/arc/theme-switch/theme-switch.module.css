@@ -1,0 +1,75 @@
+.themeSwitch {
+  position: relative;
+  width: auto;
+  padding-inline: var(--space-3);
+}
+.iconOnly {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-control);
+  padding: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .themeSwitch:hover:not(:disabled) {
+    border-color: var(--border-strong);
+  }
+  .iconOnly:hover:not(:disabled) {
+    background: var(--surface-muted);
+    box-shadow: none;
+  }
+}
+.iconWrap {
+  position: relative;
+  display: inline-grid;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  place-items: center;
+}
+.icon {
+  position: absolute;
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+}
+.label {
+  white-space: nowrap;
+}
+/* Each variant nudges the icon the way its page transition travels, and eases back when the theme returns. */
+.themeSwitch.reveal[data-theme="dark"] .iconWrap {
+  transform: scale(1.08);
+}
+.themeSwitch.eclipse[data-theme="dark"] .iconWrap {
+  transform: translateX(-2px);
+}
+.themeSwitch.split[data-theme="dark"] .iconWrap {
+  transform: translateX(1px);
+}
+.themeSwitch.rise[data-theme="dark"] .iconWrap {
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .interacted .iconWrap {
+    transition: transform var(--duration-spring) var(--ease-spring);
+  }
+  .interacted .icon {
+    animation: icon-enter var(--duration-fast) var(--ease-standard) both;
+  }
+  .interacted[data-theme="dark"] {
+    --icon-angle: -28deg;
+  }
+}
+@keyframes icon-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.78) rotate(var(--icon-angle, 28deg));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .themeSwitch[data-theme] .iconWrap {
+    transform: none;
+  }
+}

@@ -1,135 +1,264 @@
-import { motion } from "framer-motion";
-import { Mail, Github, Instagram, ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { CopyButton } from "@/components/arc/copy-button/copy-button";
+import { Button } from "@/components/ui/button";
+import { identity, serviceIds, type ServiceId } from "@/content/portfolio";
 import { useLanguage } from "@/contexts/LanguageContext";
+import {
+  createQuoteDraft,
+  quoteCopy,
+  quoteFields,
+  quoteLimits,
+  validateQuote,
+  type QuoteField,
+} from "@/lib/quote";
 
-const contactLinks = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "mateushenrique6968@gmail.com",
-    href: "mailto:mateushenrique6968@gmail.com",
-    color: "hover:text-red-400",
-  },
-  {
-    icon: Github,
-    label: "GitHub",
-    value: "@theeussx",
-    href: "https://github.com/theeussx",
-    color: "hover:text-gray-300",
-  },
-  {
-    icon: Instagram,
-    label: "Instagram",
-    value: "@theeussx_",
-    href: "https://instagram.com/theeussx_",
-    color: "hover:text-pink-400",
-  },
-];
+export type QuotePreset = { service: ServiceId };
 
-export default function Contact() {
-  const { t } = useLanguage();
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+export default function Contact({ preset }: { preset: QuotePreset | null }) {
+  const { language, t } = useLanguage();
+  const copy = quoteCopy[language];
+  const [ready, setReady] = useState(false);
+  const [selection, setSelection] = useState<ServiceId | "other" | "">("");
+  const [errors, setErrors] = useState<
+    ReturnType<typeof validateQuote>["errors"]
+  >({});
+  const [values, setValues] = useState<
+    ReturnType<typeof validateQuote>["values"] | null
+  >(null);
+  const form = useRef<HTMLFormElement>(null);
+  const prepared = useRef<HTMLHeadingElement>(null);
+  const invalid = useRef<QuoteField | null>(null);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
+  useEffect(() => setReady(true), []);
+
+  useEffect(() => {
+    if (!preset) return;
+    setSelection(preset.service);
+    setValues(null);
+    setErrors(previous => ({ ...previous, service: undefined }));
+  }, [preset]);
+
+  useEffect(() => {
+    if (invalid.current) {
+      const field = form.current?.elements.namedItem(invalid.current);
+      if (field instanceof HTMLElement) field.focus();
+      invalid.current = null;
+    }
+  }, [errors]);
+
+  useEffect(() => {
+    if (values) prepared.current?.focus();
+  }, [values]);
+
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const input = {
+      name: "",
+      email: "",
+      company: "",
+      phone: "",
+      service: "",
+      description: "",
+      investment: "",
+      deadline: "",
+    };
+    for (const field of quoteFields)
+      input[field] = String(data.get(field) ?? "");
+    const result = validateQuote(input);
+    invalid.current = quoteFields.find(field => result.errors[field]) ?? null;
+    setErrors(result.errors);
+    setValues(invalid.current ? null : result.values);
+  }
+
+  function descriptions(field: QuoteField) {
+    const ids = [
+      field === "description" ? "quote-description-hint" : "",
+      errors[field] ? `quote-${field}-error` : "",
+    ].filter(Boolean);
+    return ids.join(" ") || undefined;
+  }
+
+  function errorText(field: QuoteField) {
+    const error = errors[field];
+    return (
+      error && (
+        <span className="field-error" id={`quote-${field}-error`}>
+          {copy.errors[error]}
+        </span>
+      )
+    );
+  }
+
+  function input(
+    field: Exclude<QuoteField, "service" | "description">,
+    autocomplete?: string,
+    type = "text"
+  ) {
+    const required = field === "name" || field === "email";
+    return (
+      <div className="field">
+        <label htmlFor={`quote-${field}`}>
+          {copy.fields[field]} {!required && <small>{copy.optional}</small>}
+        </label>
+        <input
+          id={`quote-${field}`}
+          name={field}
+          type={type}
+          autoComplete={autocomplete}
+          required={required}
+          maxLength={quoteLimits[field]}
+          aria-invalid={errors[field] ? true : undefined}
+          aria-describedby={descriptions(field)}
+        />
+        {errorText(field)}
+      </div>
+    );
+  }
+
+  const draft = values && createQuoteDraft(values, language);
 
   return (
-    <section id="contato" className="relative overflow-hidden bg-transparent py-20">
-      <div className="container max-w-4xl mx-auto px-4 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
-            {t.contact.title}
+    <section
+      id="contato"
+      className="section contact-section"
+      aria-labelledby="contact-title"
+      tabIndex={-1}
+    >
+      <div className="shell contact-layout">
+        <div className="contact-intro">
+          <p className="eyebrow">{t.contactLabel}</p>
+          <h2 id="contact-title">
+            {t.contactTitle[0]}
+            <br />
+            {t.contactTitle[1]}
           </h2>
-          <p className="text-gray-400 text-lg">
-            {t.contact.description}
-          </p>
-        </motion.div>
-
-        {/* Contact Cards */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
-        >
-          {contactLinks.map((link, index) => {
-            const Icon = link.icon;
-            return (
-              <motion.a
-                key={index}
-                variants={itemVariants}
-                href={link.href}
-                target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                whileHover={{ y: -5 }}
-                className="group"
-              >
-                <div className="h-full p-6 rounded-lg border border-slate-800 hover:border-cyan-500/50 bg-slate-900/30 backdrop-blur hover:glow-effect transition-all duration-300">
-                  <div className="mb-4 inline-block p-3 rounded-lg bg-slate-800 group-hover:bg-slate-700 transition-colors">
-                    <Icon className={`w-6 h-6 text-cyan-400 transition-colors ${link.color}`} />
-                  </div>
-
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                    {link.label}
-                  </h3>
-
-                  <p className="text-gray-400 text-sm break-all group-hover:text-gray-300 transition-colors">
-                    {link.value}
-                  </p>
-
-                  <div className="mt-4 pt-4 border-t border-slate-700 flex items-center gap-2 text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="text-sm font-medium">{t.contact.send}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </motion.a>
-            );
-          })}
-        </motion.div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center p-8 rounded-lg border border-slate-800 bg-slate-900/40"
-        >
-          <h3 className="text-2xl font-bold text-white mb-4">
-            {t.contact.ready}
-          </h3>
-          <p className="text-gray-400 mb-6">
-            {t.contact.invitation}
-          </p>
-          <a
-            href="mailto:mateushenrique6968@gmail.com"
-            className="inline-block px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition-colors duration-200"
+          <p>{t.contactCopy}</p>
+          <div className="direct-email">
+            <p>{t.contactFallback}</p>
+            <div>
+              <a className="link" href={`mailto:${identity.email}`}>
+                <Mail size={17} aria-hidden="true" />
+                {identity.email}
+              </a>
+              <CopyButton
+                value={identity.email}
+                label={t.emailCopy}
+                copiedLabel={copy.copied}
+                failedLabel={copy.copyFailed}
+                iconOnly
+                variant="plain"
+                className="icon-action"
+                disabled={!ready}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <form
+            ref={form}
+            className="quote-form"
+            method="post"
+            noValidate
+            onSubmit={submit}
+            onChange={() => {
+              if (values) setValues(null);
+            }}
+            aria-label={t.request}
+            aria-describedby="privacidade"
           >
-            {t.contact.sendEmail}
-          </a>
-        </motion.div>
+            <fieldset className="quote-fields" disabled={!ready}>
+              <div className="quote-grid">
+                {input("name", "name")}
+                {input("email", "email", "email")}
+                {input("company", "organization")}
+                {input("phone", "tel", "tel")}
+                <div className="field field-wide">
+                  <label htmlFor="quote-service">{copy.fields.service}</label>
+                  <select
+                    id="quote-service"
+                    name="service"
+                    value={selection}
+                    required
+                    onChange={event => {
+                      const next = event.currentTarget.value;
+                      setSelection(
+                        serviceIds.find(id => id === next) ??
+                          (next === "other" ? "other" : "")
+                      );
+                    }}
+                    aria-invalid={errors.service ? true : undefined}
+                    aria-describedby={descriptions("service")}
+                  >
+                    <option value="">{copy.choose}</option>
+                    {serviceIds.map(id => (
+                      <option key={id} value={id}>
+                        {t.services[id].title}
+                      </option>
+                    ))}
+                    <option value="other">{copy.other}</option>
+                  </select>
+                  {errorText("service")}
+                </div>
+                <div className="field field-wide">
+                  <label htmlFor="quote-description">
+                    {copy.fields.description}
+                  </label>
+                  <textarea
+                    id="quote-description"
+                    name="description"
+                    rows={4}
+                    required
+                    maxLength={quoteLimits.description}
+                    aria-invalid={errors.description ? true : undefined}
+                    aria-describedby={descriptions("description")}
+                  />
+                  <span className="field-hint" id="quote-description-hint">
+                    {copy.describe}
+                  </span>
+                  {errorText("description")}
+                </div>
+                {input("investment")}
+                {input("deadline")}
+              </div>
+              {Object.values(errors).some(Boolean) && (
+                <p className="field-error" role="status">
+                  {copy.errorTitle}
+                </p>
+              )}
+              <Button className="button button-primary" type="submit">
+                {copy.prepare}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Button>
+            </fieldset>
+            {draft && (
+              <div className="quote-ready">
+                <h3 ref={prepared} tabIndex={-1}>
+                  {copy.ready}
+                </h3>
+                <p>{copy.instructions}</p>
+                <div className="quote-actions">
+                  <a className="button button-outline" href={draft.href}>
+                    {copy.open}
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </a>
+                  <CopyButton
+                    value={draft.body}
+                    label={copy.copy}
+                    copiedLabel={copy.copied}
+                    failedLabel={copy.copyFailed}
+                    variant="plain"
+                    className="button"
+                  />
+                </div>
+              </div>
+            )}
+          </form>
+          <p className="privacy-note" id="privacidade">
+            {copy.privacy}
+          </p>
+        </div>
       </div>
     </section>
   );

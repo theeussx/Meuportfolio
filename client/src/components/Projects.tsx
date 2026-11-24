@@ -1,172 +1,253 @@
-import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Maximize2,
+  Plus,
+  X,
+} from "lucide-react";
+import { projects } from "@/content/projects";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const projects = [
-  {
-    image: "https://raw.githubusercontent.com/theeussx/feira-matematica/refs/heads/main/client/public/image/logo.png",
-    technologies: ["HTML", "CSS", "Kotlin", "TypeScript", "React", "Tailwind"],
-    github: "https://github.com/theeussx/feira-matematica",
-    demo: "https://feira-de-matematica.vercel.app/",
-  },
-  {
-    image: "https://raw.githubusercontent.com/theeussx/pterodroid/refs/heads/main/pterodroid.png",
-    technologies: ["TypeScript", "JavaScript", "SQLite", "Shell", "Express", "Tailwind"],
-    github: "https://github.com/theeussx/pterodroid",
-    demo: "https://pterodroid-doc.vercel.app/",
-  },
-  {
-    image: "https://raw.githubusercontent.com/theeussx/zittodb/refs/heads/main/src-tauri/icons/icon.png",
-    technologies: ["TypeScript", "Rust", "CSS", "JavaScript", "Shell", "Makefile"],
-    github: "https://github.com/theeussx/zittodb",
-    demo: null,
-  },
-];
+type Project = (typeof projects)[number];
+
+function ProjectGallery({ project }: { project: Project }) {
+  const { language, t } = useLanguage();
+  const [active, setActive] = useState(0);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const trigger = useRef<HTMLAnchorElement>(null);
+  const shot = project.media[active];
+
+  useEffect(() => {
+    const element = dialog.current;
+    if (!element) return;
+
+    function onClose() {
+      trigger.current?.focus();
+    }
+    element.addEventListener("close", onClose);
+    return () => element.removeEventListener("close", onClose);
+  }, []);
+
+  if (!shot) return null;
+
+  function change(direction: number) {
+    setActive(
+      current =>
+        (current + direction + project.media.length) % project.media.length
+    );
+  }
+
+  const controls = project.media.length > 1 && (
+    <div className="gallery-controls">
+      <button
+        className="icon-action"
+        type="button"
+        aria-label={t.previous}
+        onClick={() => change(-1)}
+      >
+        <ArrowLeft size={18} aria-hidden="true" />
+      </button>
+      <span className="counter" aria-live="polite">
+        {active + 1} / {project.media.length}
+      </span>
+      <button
+        className="icon-action"
+        type="button"
+        aria-label={t.next}
+        onClick={() => change(1)}
+      >
+        <ArrowRight size={18} aria-hidden="true" />
+      </button>
+    </div>
+  );
+
+  return (
+    <figure
+      className="project-gallery"
+      aria-label={`${t.gallery} · ${project.name}`}
+    >
+      <div className="project-media">
+        <a
+          ref={trigger}
+          className="gallery-image-button"
+          href={shot.src}
+          aria-label={`${t.openImage} · ${project.name}`}
+          onClick={event => {
+            if (
+              !dialog.current?.showModal ||
+              event.metaKey ||
+              event.ctrlKey ||
+              event.shiftKey ||
+              event.altKey
+            )
+              return;
+            event.preventDefault();
+            dialog.current.showModal();
+          }}
+        >
+          <img
+            key={shot.src}
+            src={shot.src}
+            width={shot.width}
+            height={shot.height}
+            alt={shot.alt[language]}
+            loading="lazy"
+            decoding="async"
+          />
+          <span aria-hidden="true">
+            <Maximize2 size={18} />
+          </span>
+        </a>
+      </div>
+      <figcaption>
+        <span aria-live="polite">{shot.caption[language]}</span>
+        {controls}
+      </figcaption>
+      <dialog
+        ref={dialog}
+        className="gallery-dialog"
+        aria-label={`${t.gallery} · ${project.name}`}
+        onKeyDown={event => {
+          if (
+            project.media.length < 2 ||
+            !["ArrowLeft", "ArrowRight"].includes(event.key)
+          )
+            return;
+          event.preventDefault();
+          change(event.key === "ArrowLeft" ? -1 : 1);
+        }}
+      >
+        <div className="dialog-toolbar">
+          <strong>{project.name}</strong>
+          <button
+            className="icon-action"
+            type="button"
+            aria-label={language === "pt" ? "Fechar galeria" : "Close gallery"}
+            onClick={() => dialog.current?.close()}
+            autoFocus
+          >
+            <X size={21} aria-hidden="true" />
+          </button>
+        </div>
+        <img
+          src={shot.src}
+          width={shot.width}
+          height={shot.height}
+          alt={shot.alt[language]}
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="dialog-toolbar">
+          <span aria-live="polite">{shot.caption[language]}</span>
+          {controls}
+        </div>
+      </dialog>
+    </figure>
+  );
+}
+
+function ProjectStory({ project }: { project: Project }) {
+  const { language, t } = useLanguage();
+  const copy = project.copy[language];
+  return (
+    <div className="project-story">
+      <p className="eyebrow">{copy.category}</p>
+      <h3>{project.name}</h3>
+      <p className="project-summary">{copy.summary}</p>
+      <ul
+        className="tech-list"
+        aria-label={language === "pt" ? "Tecnologias" : "Technologies"}
+      >
+        {project.technologies.map(tool => (
+          <li key={tool}>{tool}</li>
+        ))}
+      </ul>
+      <details className="project-details">
+        <summary>
+          {t.caseStudy}
+          <Plus size={18} aria-hidden="true" />
+        </summary>
+        <div className="project-details-copy">
+          <p className="project-status">{copy.status}</p>
+          <h4>{t.context}</h4>
+          <p>{copy.context}</p>
+          <h4>{t.contribution}</h4>
+          <p>{copy.contribution}</p>
+          <h4>{t.features}</h4>
+          <ul>
+            {copy.features.map(feature => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      </details>
+      <div className="project-links">
+        {project.links.map(({ kind, url }) => (
+          <a
+            className="link"
+            key={url}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.links[kind]}
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        ))}
+        {!project.links.some(({ kind }) => kind === "source") && (
+          <a
+            className="link"
+            href={project.repository}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.source}
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function Projects() {
   const { t } = useLanguage();
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as const },
-    },
-  };
-
+  const [featured, ...others] = projects;
   return (
     <section
       id="projetos"
-      className="relative overflow-hidden border-t border-cyan-950/50 bg-transparent py-20 md:py-24"
+      className="section projects-section"
+      aria-labelledby="projects-title"
+      tabIndex={-1}
     >
-      <div className="container max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16 md:mb-20"
-        >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-600 animate-pulse">
-            {t.projects.title}
-          </h2>
-          <p className="text-gray-400 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
-            {t.projects.description}
-          </p>
-        </motion.div>
-
-        {/* Grid de Projetos */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16"
-        >
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ y: -10, scale: 1.02, boxShadow: "0 0 25px rgba(0, 245, 255, 0.25)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group h-full"
+      <div className="shell">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">{t.selected}</p>
+            <h2 id="projects-title">{t.workTitle}</h2>
+          </div>
+          <p>{t.workIntro}</p>
+        </div>
+        {featured && (
+          <article className="project-feature" data-project={featured.id}>
+            <ProjectGallery project={featured} />
+            <ProjectStory project={featured} />
+          </article>
+        )}
+        <div className="project-pair">
+          {others.map(project => (
+            <article
+              className="project-secondary"
+              data-project={project.id}
+              key={project.id}
             >
-              <div className="h-full rounded-2xl overflow-hidden bg-slate-900/60 backdrop-blur-md border border-cyan-900/40 hover:border-cyan-500/60 transition-all duration-300 shadow-lg hover:shadow-cyan-500/20 flex flex-col">
-                {/* Imagem */}
-                <div className="relative h-52 overflow-hidden bg-slate-800">
-                  {project.image ? (
-                    <img
-                      src={project.image}
-                      alt={t.projects.items[index].title}
-                      className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-800 to-slate-700">
-                      <span className="text-6xl opacity-30">📸</span>
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
-                </div>
-
-                {/* Conteúdo */}
-                <div className="p-6 md:p-7 flex-1 flex flex-col">
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 text-white group-hover:text-cyan-400 transition-colors duration-300">
-                    {t.projects.items[index].title}
-                  </h3>
-
-                  <p className="text-gray-400 text-base mb-5 leading-relaxed flex-1">
-                    {t.projects.items[index].description}
-                  </p>
-
-                  {/* Tecnologias */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 text-xs font-mono bg-cyan-950/40 border border-cyan-800/40 text-cyan-300 rounded-full hover:bg-cyan-900/50 hover:border-cyan-600/60 transition-all duration-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex gap-4 mt-auto">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-800/80 hover:bg-cyan-950/50 border border-slate-700 hover:border-cyan-600 text-gray-200 hover:text-cyan-300 rounded-lg transition-all duration-300 font-medium"
-                    >
-                      <Github className="w-5 h-5" />
-                      GitHub
-                    </a>
-
-                    {project.demo && project.demo !== "https://example.com" && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 bg-cyan-950/40 hover:bg-cyan-900/50 border border-cyan-900 hover:border-cyan-700 text-cyan-300 rounded-lg transition-colors duration-200 font-medium"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                        Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              <ProjectGallery project={project} />
+              <ProjectStory project={project} />
+            </article>
           ))}
-        </motion.div>
-
-        {/* CTA final */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <a
-            href="https://github.com/theeussx"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 text-lg font-semibold text-white bg-cyan-600 hover:bg-cyan-500 rounded-lg transition-colors duration-200"
-          >
-            <Github className="w-5 h-5" />
-            {t.projects.allProjects}
-          </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

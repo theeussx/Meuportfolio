@@ -1,26 +1,99 @@
 <!doctype html>
-<html lang="pt-BR">
-
+<html lang="pt-BR" class="dark" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d1016" />
+    <title>Mateus Henrique · Desenvolvimento Web e Automações | Theeussx</title>
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <meta name="theme-color" content="#0F172A" />
+      name="description"
+      content="Mateus Henrique, desenvolvedor web e de automações em Pernambuco. Explore projetos, código aberto e serviços para sites, sistemas e integrações."
+    />
+    <link rel="canonical" href="https://theeussx.vercel.app/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Mateus Henrique | Portfólio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      href="/fonts/geist-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Theeussx" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://theeussx.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Theeussx · Sites, sistemas e automações"
+    />
+    <meta
+      property="og:description"
+      content="Projetos e serviços de Mateus Henrique, desenvolvedor web e de automações em Pernambuco."
+    />
+    <meta
+      property="og:image"
+      content="https://theeussx.vercel.app/media/compartilhamento.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Theeussx. Sites, sistemas e automações. Retrato de Mateus Henrique."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Theeussx · Sites, sistemas e automações"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfólio de Mateus Henrique, desenvolvedor web e de automações em Pernambuco."
+    />
+    <meta
+      name="twitter:image"
+      content="https://theeussx.vercel.app/media/compartilhamento.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Theeussx. Sites, sistemas e automações. Retrato de Mateus Henrique."
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://theeussx.vercel.app/#mateus",
+            "name": "Mateus Henrique",
+            "alternateName": "Theeussx",
+            "jobTitle": "Desenvolvedor web e automações",
+            "url": "https://theeussx.vercel.app/",
+            "image": "https://theeussx.vercel.app/media/mateus-800.webp",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "Pernambuco",
+              "addressCountry": "BR"
+            },
+            "sameAs": [
+              "https://github.com/theeussx",
+              "https://instagram.com/theeussx_"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://theeussx.vercel.app/#website",
+            "url": "https://theeussx.vercel.app/",
+            "name": "Theeussx",
+            "inLanguage": ["pt-BR", "en"],
+            "author": { "@id": "https://theeussx.vercel.app/#mateus" }
+          }
+        ]
+      }
+    </script>
+    <script src="/theme.js"></script>
   </head>
-
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
-
 </html>

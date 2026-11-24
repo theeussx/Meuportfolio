@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://theeussx.vercel.app/sitemap.xml

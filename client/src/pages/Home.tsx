@@ -1,21 +1,27 @@
+import { useState } from "react";
+import About from "@/components/About";
+import Contact, { type QuotePreset } from "@/components/Contact";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
+import Services from "@/components/Services";
+import SiteHeader from "@/components/SiteHeader";
 import Technologies from "@/components/Technologies";
-import Certificates from "@/components/Certificates";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 
 export default function Home() {
+  const [preset, setPreset] = useState<QuotePreset | null>(null);
   return (
-    <div className="min-h-screen overflow-x-hidden bg-black text-white">
-      <Hero />
-      <Projects />
-      <Technologies />
-      <Certificates />
-      <About />
-      <Contact />
+    <>
+      <SiteHeader />
+      <main id="conteudo" tabIndex={-1}>
+        <Hero />
+        <Projects />
+        <Services onRequest={service => setPreset({ service })} />
+        <Technologies />
+        <About />
+        <Contact preset={preset} />
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }

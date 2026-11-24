@@ -15,5 +15,8 @@
     "ui": "@/components/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
+  },
+  "registries": {
+    "@uiarc": "https://uiarc.dev/r/{name}.json"
   }
 }
