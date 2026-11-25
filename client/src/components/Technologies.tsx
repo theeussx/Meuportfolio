@@ -15,7 +15,7 @@ export default function Technologies() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">
-              {language === "pt" ? "Competências" : "Skills"}
+              {language === "br" ? "Competências" : "Skills"}
             </p>
             <h2 id="technologies-title">{t.skillsTitle}</h2>
           </div>

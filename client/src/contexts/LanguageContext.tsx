@@ -16,12 +16,12 @@ const LanguageContext = createContext<{
 } | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("pt");
+  const [language, setLanguage] = useState<Language>("br");
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem(storageKey);
-      if (saved === "pt" || saved === "en") setLanguage(saved);
+      if (saved === "br" || saved === "en") setLanguage(saved);
     } catch {
       // Preferences are optional when browser storage is unavailable.
     }
@@ -32,7 +32,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [language]);
 
   function toggleLanguage() {
-    const next = language === "pt" ? "en" : "pt";
+    const next = language === "br" ? "en" : "br";
     setLanguage(next);
     try {
       localStorage.setItem(storageKey, next);

@@ -100,7 +100,7 @@ export default function SiteHeader() {
               onClick={toggleLanguage}
               aria-label={t.language}
             >
-              <span aria-hidden="true">{language === "pt" ? "PT" : "EN"}</span>
+              <span aria-hidden="true">{language === "br" ? "BR" : "EN"}</span>
             </button>
             <ThemeSwitch
               theme={theme}

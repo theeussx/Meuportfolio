@@ -1,4 +1,4 @@
-type Localized<T> = Record<"pt" | "en", T>;
+type Localized<T> = Record<"br" | "en", T>;
 
 export type ProjectLinkKind = "live" | "docs" | "download" | "source";
 
@@ -42,11 +42,11 @@ export const projects: readonly Project[] = [
         width: 1360,
         height: 820,
         alt: {
-          pt: "Painel Pterodroid com a lista de serviços e a visão de recursos do sistema.",
+          br: "Painel Pterodroid com a lista de serviços e a visão de recursos do sistema.",
           en: "Pterodroid dashboard showing the service list and system resources.",
         },
         caption: {
-          pt: "Painel executado localmente com serviços de exemplo.",
+          br: "Painel executado localmente com serviços de exemplo.",
           en: "Dashboard running locally with sample services.",
         },
       },
@@ -55,17 +55,17 @@ export const projects: readonly Project[] = [
         width: 1360,
         height: 820,
         alt: {
-          pt: "Tela de gerenciamento com os serviços cadastrados e ações de configuração.",
+          br: "Tela de gerenciamento com os serviços cadastrados e ações de configuração.",
           en: "Management screen with registered services and configuration controls.",
         },
         caption: {
-          pt: "Gerenciamento de serviços no painel local.",
+          br: "Gerenciamento de serviços no painel local.",
           en: "Service management in the local dashboard.",
         },
       },
     ],
     copy: {
-      pt: {
+      br: {
         category: "Infraestrutura · Projeto open source",
         status: "Código e documentação públicos",
         summary:
@@ -115,11 +115,11 @@ export const projects: readonly Project[] = [
         width: 1360,
         height: 820,
         alt: {
-          pt: "Tela inicial do ZittoDB com dispositivos Android de exemplo e seus estados de conexão.",
+          br: "Tela inicial do ZittoDB com dispositivos Android de exemplo e seus estados de conexão.",
           en: "ZittoDB home screen with sample Android devices and their connection states.",
         },
         caption: {
-          pt: "Interface do projeto em modo demonstração com dispositivos simulados.",
+          br: "Interface do projeto em modo demonstração com dispositivos simulados.",
           en: "Project interface in demo mode with simulated devices.",
         },
       },
@@ -128,17 +128,17 @@ export const projects: readonly Project[] = [
         width: 1360,
         height: 820,
         alt: {
-          pt: "Visão geral de um aparelho Android de exemplo selecionado no ZittoDB.",
+          br: "Visão geral de um aparelho Android de exemplo selecionado no ZittoDB.",
           en: "Overview of a sample Android device selected in ZittoDB.",
         },
         caption: {
-          pt: "Detalhes do dispositivo no modo demonstração.",
+          br: "Detalhes do dispositivo no modo demonstração.",
           en: "Device details in demo mode.",
         },
       },
     ],
     copy: {
-      pt: {
+      br: {
         category: "Aplicativo desktop · Projeto open source",
         status: "Versão 1.0.0 disponível para Linux",
         summary:
@@ -182,11 +182,11 @@ export const projects: readonly Project[] = [
         width: 1360,
         height: 820,
         alt: {
-          pt: "Página inicial da Feira de Matemática com uma introdução à realidade aumentada.",
+          br: "Página inicial da Feira de Matemática com uma introdução à realidade aumentada.",
           en: "Mathematics Fair homepage introducing augmented reality.",
         },
         caption: {
-          pt: "Página inicial da experiência educativa publicada.",
+          br: "Página inicial da experiência educativa publicada.",
           en: "Homepage of the published educational experience.",
         },
       },
@@ -195,11 +195,11 @@ export const projects: readonly Project[] = [
         width: 1360,
         height: 820,
         alt: {
-          pt: "Demonstração da Feira de Matemática com leituras de exemplo do acelerômetro nos eixos X, Y e Z.",
+          br: "Demonstração da Feira de Matemática com leituras de exemplo do acelerômetro nos eixos X, Y e Z.",
           en: "Mathematics Fair demo with sample accelerometer readings on the X, Y, and Z axes.",
         },
         caption: {
-          pt: "Demonstração local com leituras de exemplo e câmera desativada.",
+          br: "Demonstração local com leituras de exemplo e câmera desativada.",
           en: "Local demo with sample readings and the camera disabled.",
         },
       },
@@ -208,17 +208,17 @@ export const projects: readonly Project[] = [
         width: 1360,
         height: 820,
         alt: {
-          pt: "Primeira pergunta do quiz da Feira de Matemática sobre realidade aumentada.",
+          br: "Primeira pergunta do quiz da Feira de Matemática sobre realidade aumentada.",
           en: "First question in the Mathematics Fair quiz, about augmented reality.",
         },
         caption: {
-          pt: "Quiz interativo executado localmente.",
+          br: "Quiz interativo executado localmente.",
           en: "Interactive quiz running locally.",
         },
       },
     ],
     copy: {
-      pt: {
+      br: {
         category: "Experiência web · Projeto educacional em equipe",
         status: "Site e código públicos",
         summary:

@@ -16,17 +16,17 @@ export const serviceIds = [
   "modernization",
 ] as const;
 export type ServiceId = (typeof serviceIds)[number];
-export type Language = "pt" | "en";
+export type Language = "br" | "en";
 
 export const languages = {
-  pt: {
-    locale: "pt-BR",
+  br: {
+    locale: "BR",
     skip: "Pular para o conteúdo",
     navLabel: "Navegação principal",
     menu: "Menu",
     nav: { projetos: "Projetos", servicos: "Serviços", sobre: "Sobre" },
     contact: "Contato",
-    language: "PT · Mudar idioma para inglês",
+    language: "BR · Mudar idioma para inglês",
     theme: "Tema escuro",
     location: "Pernambuco, Brasil",
     role: "Desenvolvedor web e automações",
@@ -132,7 +132,7 @@ export const languages = {
     aboutLabel: "Sobre mim",
     aboutTitle: "Prazer, Mateus.",
     about: [
-      "Sou desenvolvedor de Pernambuco e comecei a programar pelo celular, usando Termux. O que começou como um jeito de estudar com as ferramentas que eu tinha virou interesse por Linux, automações e desenvolvimento web.",
+      "Sou um desenvolvedor de Pernambuco/Várzea e comecei a programar pelo celular, usando Termux. O que começou como um jeito de estudar com as ferramentas que eu tinha virou interesse por Linux, automações e desenvolvimento web.",
       "Gosto de entender como cada parte de um sistema funciona e cuidar de como as pessoas usam a interface. Hoje exploro essas duas frentes em projetos pessoais e de código aberto, entre Android, Linux e a web.",
       "Tenho interesse em projetos freelance, oportunidades profissionais e em colaborar com quem está construindo produtos úteis.",
     ],

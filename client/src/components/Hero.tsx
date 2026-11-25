@@ -8,7 +8,6 @@ export default function Hero() {
     <section id="inicio" className="shell hero" aria-labelledby="hero-title">
       <div className="hero-body">
         <p className="eyebrow hero-role">
-          <span aria-hidden="true" />
           {t.role}
         </p>
         <h1 id="hero-title">

@@ -124,7 +124,7 @@ function ProjectGallery({ project }: { project: Project }) {
           <button
             className="icon-action"
             type="button"
-            aria-label={language === "pt" ? "Fechar galeria" : "Close gallery"}
+            aria-label={language === "br" ? "Fechar galeria" : "Close gallery"}
             onClick={() => dialog.current?.close()}
             autoFocus
           >
@@ -158,7 +158,7 @@ function ProjectStory({ project }: { project: Project }) {
       <p className="project-summary">{copy.summary}</p>
       <ul
         className="tech-list"
-        aria-label={language === "pt" ? "Tecnologias" : "Technologies"}
+        aria-label={language === "br" ? "Tecnologias" : "Technologies"}
       >
         {project.technologies.map(tool => (
           <li key={tool}>{tool}</li>

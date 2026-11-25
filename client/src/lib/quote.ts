@@ -34,7 +34,7 @@ export const quoteLimits: Record<QuoteField, number> = {
 };
 
 export const quoteCopy = {
-  pt: {
+  br: {
     fields: {
       name: "Nome",
       email: "E-mail",
