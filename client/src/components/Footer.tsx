@@ -5,6 +5,8 @@ import { Brand } from "./SiteHeader";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="shell">
@@ -39,9 +41,8 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <small>
-            © {new Date().getFullYear()} {identity.name}. {t.rights}
+            © 2025–{currentYear} {identity.name}. {t.rights}
           </small>
-          <a href="#privacidade">{t.privacy}</a>
           <a href="#inicio">
             {t.top}
             <ArrowUp size={14} aria-hidden="true" />

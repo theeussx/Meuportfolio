@@ -1,10 +1,15 @@
 import { ArrowDownRight, ArrowUpRight, Github, MapPin } from "lucide-react";
 import { identity } from "@/content/portfolio";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import Reveal from "@/components/motion/Reveal";
 
 export default function Hero() {
   const { t } = useLanguage();
+  const { theme } = useTheme();
+  const portraitBase =
+    theme === "light" ? "/media/mateus-light" : "/media/mateus";
+
   return (
     <section id="inicio" className="shell hero" aria-labelledby="hero-title">
       <Reveal className="hero-body" delay={40}>
@@ -40,11 +45,11 @@ export default function Hero() {
         <figure className="portrait">
           <div className="portrait-frame">
             <img
-              src="/media/mateus-800.webp"
-              srcSet="/media/mateus-480.webp 480w, /media/mateus-800.webp 800w, /media/mateus-1120.webp 1120w"
+              src={`${portraitBase}-800.webp`}
+              srcSet={`${portraitBase}-480.webp 480w, ${portraitBase}-800.webp 800w, ${portraitBase}-1120.webp 1120w`}
               sizes="(min-width: 1250px) 410px, (min-width: 900px) 35vw, (min-width: 700px) 34vw, (min-width: 520px) 440px, 88vw"
               width={800}
-              height={1040}
+              height={1000}
               fetchPriority="high"
               alt={`${identity.name} — ${t.role}`}
             />

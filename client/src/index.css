@@ -491,7 +491,7 @@ html:not(.js) .site-nav {
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 0.25rem 0.25rem 0 0;
-  background: var(--surface);
+  background: var(--background);
 }
 .portrait-frame img {
   width: 100%;
