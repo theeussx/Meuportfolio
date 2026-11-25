@@ -939,8 +939,7 @@ html:not(.js) .site-nav {
   border-top: 1px solid var(--border);
   align-self: center;
 }
-.github-section li a,
-.certificate-section li a {
+.github-section li a {
   display: flex;
   min-height: 52px;
   align-items: center;
@@ -952,8 +951,7 @@ html:not(.js) .site-nav {
   font-family: var(--font-code);
   font-size: 0.79rem;
 }
-.github-section li a:hover,
-.certificate-section li a:hover {
+.github-section li a:hover {
   color: var(--accent);
 }
 .github-section li a span > span {
@@ -968,48 +966,133 @@ html:not(.js) .site-nav {
   line-height: 1.64;
 }
 .certificate-section {
-  margin-top: clamp(2rem, 4vw, 3.4rem);
+  background: var(--surface);
 }
-.certificate-section h3 {
-  margin-block-end: 0.85rem;
-  font-size: 1.3rem;
-  font-weight: 630;
-  letter-spacing: -0.04em;
+.certificate-heading h2 {
+  max-width: 16ch;
 }
-.certificate-section ul {
+.certificate-heading-aside {
+  display: grid;
+  max-width: 34ch;
+  align-content: end;
+  gap: 1rem;
+}
+.certificate-intro {
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.6;
+}
+.certificate-count {
+  display: flex;
+  width: fit-content;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding-block-start: 0.7rem;
   border-top: 1px solid var(--border);
 }
-.certificate-section li a {
-  justify-content: start;
-  min-height: 66px;
-  padding-block: 0.6rem;
+.certificate-count strong {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 650;
+  letter-spacing: -0.07em;
+  line-height: 1;
 }
-.certificate-section strong {
-  display: block;
-  font-size: 0.92rem;
-  font-weight: 620;
-}
-.certificate-section small {
-  display: block;
+.certificate-count span {
   color: var(--text-secondary);
-  font-size: 0.76rem;
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
-.certificate-section small span {
-  margin-inline: 0.14rem;
+.certificate-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.certificate-section li a > svg:first-child {
+.certificate-item {
+  min-width: 0;
+}
+.certificate-card {
+  display: grid;
+  min-height: 15rem;
+  align-content: space-between;
+  gap: 1.8rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  text-decoration: none;
+  transition:
+    border-color var(--quick),
+    transform var(--quick),
+    background-color var(--quick);
+}
+.certificate-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 72%, var(--border));
+  background: var(--surface-elevated);
+  transform: translateY(-3px);
+}
+.certificate-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.certificate-icon {
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
   color: var(--accent);
 }
-.certificate-section li a > svg:last-child {
-  margin-inline-start: auto;
-}
 .certificate-format {
-  display: none;
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding-inline: 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
   color: var(--text-quiet);
   font-family: var(--font-code);
   font-size: 0.7rem;
 }
-
+.certificate-card-info strong {
+  display: block;
+  margin-block-end: 0.4rem;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+}
+.certificate-card-info small {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+.certificate-card-info small span {
+  margin-inline: 0.14rem;
+}
+.certificate-card-action {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  border-top: 1px solid var(--border);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 620;
+}
+.certificate-card-action svg {
+  transition: transform var(--quick) var(--ease-out);
+}
+.certificate-card:hover .certificate-card-action svg {
+  transform: translate(2px, -2px);
+}
 .contact-section {
   background: var(--surface);
 }
@@ -1193,13 +1276,6 @@ html:not(.js) .site-nav {
   .quote-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .certificate-format {
-    display: block;
-    margin-inline-start: auto;
-  }
-  .certificate-section li a > svg:last-child {
-    margin-inline-start: 0;
-  }
 }
 
 @media (min-width: 700px) {
@@ -1226,6 +1302,9 @@ html:not(.js) .site-nav {
   .technology-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .certificate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .github-section {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   }
@@ -1233,10 +1312,6 @@ html:not(.js) .site-nav {
   .about-layout {
     grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
     gap: clamp(2rem, 6vw, 6rem);
-  }
-  .about-layout .certificate-section {
-    grid-column: 1 / -1;
-    margin-block-start: 0;
   }
 }
 

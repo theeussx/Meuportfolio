@@ -7,7 +7,13 @@ export const identity = {
   instagram: "https://instagram.com/theeussx_",
 } as const;
 
-export const navigation = ["projetos", "servicos", "tecnologias", "sobre"] as const;
+export const navigation = [
+  "projetos",
+  "servicos",
+  "tecnologias",
+  "certificados",
+  "sobre",
+] as const;
 
 export const serviceIds = [
   "web",
@@ -28,6 +34,7 @@ export const languages = {
       projetos: "Projetos",
       servicos: "Serviços",
       tecnologias: "Tecnologias",
+      certificados: "Certificados",
       sobre: "Sobre",
     },
     contact: "Contato",
@@ -152,7 +159,11 @@ export const languages = {
       "Gosto de entender como cada parte de um sistema funciona e cuidar de como as pessoas usam a interface. Hoje exploro essas duas frentes em projetos pessoais e de código aberto, entre Android, Linux e a web.",
       "Tenho interesse em projetos freelance, oportunidades profissionais e em colaborar com quem está construindo produtos úteis.",
     ],
+    credentialsLabel: "Formação",
     credentials: "Formação e certificados",
+    credentialsIntro:
+      "Cursos e eventos que registram meu compromisso com o aprendizado contínuo.",
+    certificateCount: "certificados",
     viewDocument: "Ver certificado",
     certificates: [
       {
@@ -188,6 +199,7 @@ export const languages = {
       projetos: "Work",
       servicos: "Services",
       tecnologias: "Tech",
+      certificados: "Certificates",
       sobre: "About",
     },
     contact: "Contact",
@@ -306,7 +318,11 @@ export const languages = {
       "I enjoy understanding how a system works and paying attention to how people use its interface. I explore both sides through personal and open-source projects across Android, Linux, and the web.",
       "I’m interested in freelance projects, job opportunities, and collaborating with people building useful products.",
     ],
+    credentialsLabel: "Credentials",
     credentials: "Education and certificates",
+    credentialsIntro:
+      "Courses and events that reflect my commitment to continuous learning.",
+    certificateCount: "certificates",
     viewDocument: "View certificate",
     certificates: [
       {

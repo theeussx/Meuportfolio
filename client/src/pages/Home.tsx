@@ -1,5 +1,6 @@
 import { useState } from "react";
 import About from "@/components/About";
+import Certificates from "@/components/Certificates";
 import Contact, { type QuotePreset } from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -18,6 +19,7 @@ export default function Home() {
         <Projects />
         <Services onRequest={service => setPreset({ service })} />
         <Technologies />
+        <Certificates />
         <About />
         <Contact preset={preset} />
       </main>

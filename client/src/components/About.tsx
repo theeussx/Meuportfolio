@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import Certificates from "./Certificates";
 import Reveal from "@/components/motion/Reveal";
 
 export default function About() {
@@ -28,7 +27,6 @@ export default function About() {
             <ArrowUpRight size={17} aria-hidden="true" />
           </a>
         </Reveal>
-        <Certificates />
       </div>
     </section>
   );
