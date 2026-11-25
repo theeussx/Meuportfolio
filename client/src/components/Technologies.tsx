@@ -17,12 +17,22 @@ export default function Technologies() {
             <p className="eyebrow">{t.skillsLabel}</p>
             <h2 id="technologies-title">{t.skillsTitle}</h2>
           </div>
+          <p className="skills-intro">{t.skillsIntro}</p>
         </div>
         <dl className="skills-list">
-          {t.skills.map(({ title, tools, use }) => (
+          {t.skills.map(({ title, tools, use }, index) => (
             <div key={title} className="skill-row">
+              <span className="skill-index" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <dt>{title}</dt>
-              <dd>{tools}</dd>
+              <dd className="skill-tools">
+                {tools.split(" · ").map(tool => (
+                  <span key={tool} className="tech-tag">
+                    {tool}
+                  </span>
+                ))}
+              </dd>
               <dd>{use}</dd>
             </div>
           ))}

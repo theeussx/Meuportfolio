@@ -92,8 +92,10 @@ export const languages = {
       "Validação",
       "Entrega",
     ],
-    skillsLabel: "Competências",
-    skillsTitle: "Ferramentas na prática.",
+    skillsLabel: "Ferramentas que utilizo nos meus projetos",
+    skillsTitle: "Tecnologias que fazem parte dos meus projetos.",
+    skillsIntro:
+      "Uma seleção das tecnologias que uso para transformar ideias em interfaces, sistemas e automações.",
     skills: [
       {
         title: "Front-end",
@@ -232,8 +234,10 @@ export const languages = {
     quoteShort: "Get a quote",
     processLabel: "How I work",
     process: ["Discovery", "Planning", "Development", "Review", "Delivery"],
-    skillsLabel: "Skills",
-    skillsTitle: "Tools in practice.",
+    skillsLabel: "Tools I use in my projects",
+    skillsTitle: "Technologies that are part of my projects.",
+    skillsIntro:
+      "A selection of the technologies I use to turn ideas into interfaces, systems, and automation.",
     skills: [
       {
         title: "Front end",
