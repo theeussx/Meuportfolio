@@ -96,6 +96,13 @@ export const languages = {
     skillsTitle: "Tecnologias que fazem parte dos meus projetos.",
     skillsIntro:
       "Uma seleção das tecnologias que uso para transformar ideias em interfaces, sistemas e automações.",
+    technologyFilterLabel: "Filtrar tecnologias",
+    technologyFilters: {
+      all: "Todas",
+      frontend: "Frontend",
+      backend: "Backend",
+      tools: "Ferramentas",
+    },
     skills: [
       {
         title: "Front-end",
@@ -238,6 +245,13 @@ export const languages = {
     skillsTitle: "Technologies that are part of my projects.",
     skillsIntro:
       "A selection of the technologies I use to turn ideas into interfaces, systems, and automation.",
+    technologyFilterLabel: "Filter technologies",
+    technologyFilters: {
+      all: "All",
+      frontend: "Frontend",
+      backend: "Backend",
+      tools: "Tools",
+    },
     skills: [
       {
         title: "Front end",

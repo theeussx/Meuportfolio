@@ -1,10 +1,22 @@
+import { useState } from "react";
 import { ArrowUpRight, Github } from "lucide-react";
 import { identity } from "@/content/portfolio";
 import { projects } from "@/content/projects";
+import {
+  technologies,
+  technologyCategories,
+  type TechnologyCategory,
+} from "@/content/technologies";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Technologies() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const [activeCategory, setActiveCategory] = useState<TechnologyCategory>("all");
+  const visibleTechnologies =
+    activeCategory === "all"
+      ? technologies
+      : technologies.filter(technology => technology.category === activeCategory);
+
   return (
     <section
       id="tecnologias"
@@ -19,24 +31,43 @@ export default function Technologies() {
           </div>
           <p className="skills-intro">{t.skillsIntro}</p>
         </div>
-        <dl className="skills-list">
-          {t.skills.map(({ title, tools, use }, index) => (
-            <div key={title} className="skill-row">
-              <span className="skill-index" aria-hidden="true">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <dt>{title}</dt>
-              <dd className="skill-tools">
-                {tools.split(" · ").map(tool => (
-                  <span key={tool} className="tech-tag">
-                    {tool}
-                  </span>
-                ))}
-              </dd>
-              <dd>{use}</dd>
-            </div>
+        <div className="technology-filters" role="group" aria-label={t.technologyFilterLabel}>
+          {technologyCategories.map(category => (
+            <button
+              key={category}
+              type="button"
+              className="technology-filter"
+              data-active={activeCategory === category}
+              aria-pressed={activeCategory === category}
+              onClick={() => setActiveCategory(category)}
+            >
+              {t.technologyFilters[category]}
+            </button>
           ))}
-        </dl>
+        </div>
+        <ul className="technology-grid" aria-live="polite">
+          {visibleTechnologies.map(technology => {
+            const iconColor = `#${technology.icon.hex}`;
+            return (
+              <li key={technology.id} className="technology-card">
+                <div className="technology-icon" style={{ color: iconColor }}>
+                  <svg
+                    viewBox="0 0 24 24"
+                    role="img"
+                    aria-label={technology.icon.title}
+                    focusable="false"
+                    dangerouslySetInnerHTML={{ __html: `<path d="${technology.icon.path}" />` }}
+                  />
+                </div>
+                <h3>{technology.title}</h3>
+                <p>{technology.description[language]}</p>
+                <span className="technology-category">
+                  {t.technologyFilters[technology.category]}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
         <section
           id="github"
           className="github-section"
