@@ -63,7 +63,7 @@ test("normalizes user input and validates email and maximum lengths", () => {
 });
 
 test("localizes services and leaves empty optional fields out of the draft", () => {
-  for (const locale of ["pt", "en"]) {
+  for (const locale of ["br", "en"]) {
     for (const service of serviceIds) {
       const draft = createQuoteDraft({ ...valid, service }, locale);
       assert.ok(draft.body.includes(languages[locale].services[service].title));
@@ -75,13 +75,13 @@ test("localizes services and leaves empty optional fields out of the draft", () 
 
 test("keeps arbitrary text inside the body and preserves the configured recipient", () => {
   const text = "Olá! É sobre sites.\n&cc=other@example.org";
-  const draft = createQuoteDraft({ ...valid, description: text }, "pt");
+  const draft = createQuoteDraft({ ...valid, description: text }, "br");
   const url = new URL(draft.href);
 
   assert.equal(url.pathname, identity.email);
   assert.deepEqual([...url.searchParams.keys()], ["subject", "body"]);
   assert.ok(url.searchParams.get("body").includes(text.replace("\n", "\r\n")));
   assert.doesNotThrow(() =>
-    createQuoteDraft({ ...valid, description: "\uD800" }, "pt")
+    createQuoteDraft({ ...valid, description: "\uD800" }, "br")
   );
 });

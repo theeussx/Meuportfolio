@@ -20,14 +20,15 @@ export type Language = "br" | "en";
 
 export const languages = {
   br: {
-    locale: "BR",
+    locale: "pt-BR",
     skip: "Pular para o conteúdo",
     navLabel: "Navegação principal",
     menu: "Menu",
     nav: { projetos: "Projetos", servicos: "Serviços", sobre: "Sobre" },
     contact: "Contato",
     language: "BR · Mudar idioma para inglês",
-    theme: "Tema escuro",
+    switchToLight: "Mudar para o tema claro",
+    switchToDark: "Mudar para o tema escuro",
     location: "Pernambuco, Brasil",
     role: "Desenvolvedor web e automações",
     heroHeading: ["Sites, sistemas", "e automações."],
@@ -91,6 +92,7 @@ export const languages = {
       "Validação",
       "Entrega",
     ],
+    skillsLabel: "Competências",
     skillsTitle: "Ferramentas na prática.",
     skills: [
       {
@@ -139,8 +141,16 @@ export const languages = {
     credentials: "Formação e certificados",
     viewDocument: "Ver certificado",
     certificates: [
-      { title: "Programador Web", date: "Jan a jul de 2026 · 200 horas" },
-      { title: "32ª SBPC Jovem", date: "14 a 19 de julho de 2025" },
+      {
+        id: "programador-web",
+        title: "Programador Web",
+        date: "Jan a jul de 2026 · 200 horas",
+      },
+      {
+        id: "sbpc-jovem",
+        title: "32ª SBPC Jovem",
+        date: "14 a 19 de julho de 2025",
+      },
     ],
     contactLabel: "Orçamento e contato",
     contactTitle: ["Conte sobre", "seu projeto."],
@@ -163,7 +173,8 @@ export const languages = {
     nav: { projetos: "Work", servicos: "Services", sobre: "About" },
     contact: "Contact",
     language: "EN · Switch language to Portuguese",
-    theme: "Dark mode",
+    switchToLight: "Switch to light mode",
+    switchToDark: "Switch to dark mode",
     location: "Pernambuco, Brazil",
     role: "Web & automation developer",
     heroHeading: ["Websites, apps", "and automation."],
@@ -221,6 +232,7 @@ export const languages = {
     quoteShort: "Get a quote",
     processLabel: "How I work",
     process: ["Discovery", "Planning", "Development", "Review", "Delivery"],
+    skillsLabel: "Skills",
     skillsTitle: "Tools in practice.",
     skills: [
       {
@@ -269,8 +281,12 @@ export const languages = {
     credentials: "Education and certificates",
     viewDocument: "View certificate",
     certificates: [
-      { title: "Web Programming", date: "Jan to Jul 2026 · 200 hours" },
-      { title: "32nd SBPC Jovem", date: "Jul 14–19, 2025" },
+      {
+        id: "programador-web",
+        title: "Web Programming",
+        date: "Jan to Jul 2026 · 200 hours",
+      },
+      { id: "sbpc-jovem", title: "32nd SBPC Jovem", date: "Jul 14–19, 2025" },
     ],
     contactLabel: "Quotes and contact",
     contactTitle: ["Tell me about", "your project."],
@@ -289,12 +305,14 @@ export const languages = {
 
 export const certificates = [
   {
+    id: "programador-web",
     issuer: "IFRS",
     logo: "/images/IFRSLogo.png",
     document: "/images/Programador_Web.pdf",
     format: "PDF",
   },
   {
+    id: "sbpc-jovem",
     issuer: "SBPC · UFRPE",
     logo: "/images/SBPCLogo.png",
     document: "/images/SBPC.png",

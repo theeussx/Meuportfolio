@@ -4,7 +4,7 @@ import { projects } from "@/content/projects";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Technologies() {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   return (
     <section
       id="tecnologias"
@@ -14,9 +14,7 @@ export default function Technologies() {
       <div className="shell">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">
-              {language === "br" ? "Competências" : "Skills"}
-            </p>
+            <p className="eyebrow">{t.skillsLabel}</p>
             <h2 id="technologies-title">{t.skillsTitle}</h2>
           </div>
         </div>

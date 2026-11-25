@@ -105,7 +105,7 @@ export default function SiteHeader() {
             <ThemeSwitch
               theme={theme}
               onThemeChange={setTheme}
-              label={t.theme}
+              label={theme === "dark" ? t.switchToLight : t.switchToDark}
               iconOnly
               className="theme-action"
             />

@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "type": "module",
   "license": "MIT",
+  "engines": {
+    "node": ">=22 <23"
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "vite build && vite build --ssr src/entry-server.tsx --outDir ../node_modules/.portfolio-prerender --emptyOutDir && node scripts/prerender.mjs",

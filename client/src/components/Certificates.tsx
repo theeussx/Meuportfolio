@@ -12,8 +12,10 @@ export default function Certificates() {
     >
       <h3 id="certificates-title">{t.credentials}</h3>
       <ul>
-        {certificates.map(({ issuer, document, format }, index) => {
-          const { title, date } = t.certificates[index];
+        {certificates.map(({ id, issuer, document, format }) => {
+          const certificate = t.certificates.find(item => item.id === id);
+          if (!certificate) return null;
+          const { title, date } = certificate;
           return (
             <li key={document}>
               <a
@@ -21,6 +23,7 @@ export default function Certificates() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={t.viewDocument}
+                aria-label={`${title} · ${issuer} · ${format}`}
               >
                 <FileText size={21} aria-hidden="true" />
                 <span>
