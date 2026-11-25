@@ -14,6 +14,7 @@
 - Prerender de home e 404 com metadata, canonical/robots, Open Graph, Twitter Card, JSON-LD, favicon, sitemap e robots.
 - Headers de segurança, CSP com hash do JSON-LD inline, cache de assets e `allowedHosts` restrito ao ambiente de desenvolvimento permitido.
 - Motion Design com tokens centralizados, `Reveal` baseado em IntersectionObserver, fallback sem a API, `prefers-reduced-motion`, View Transition API com fallback e animações limitadas a `opacity`/`transform`.
+- Reveal aplicado efetivamente aos cabeçalhos, projetos, serviços, processo, filtros, cartões de tecnologia, GitHub, Sobre, certificados e contato; o SSR permanece visível e os elementos semânticos dos grids foram preservados.
 - Menu mobile com foco inicial, ciclo de foco por Tab/Shift+Tab, Escape, restauração de foco e fechamento ao navegar.
 - Componentes Arc locais reutilizados sem adicionar um segundo runtime de animação ou instalar dependências indiscriminadamente.
 

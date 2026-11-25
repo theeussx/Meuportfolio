@@ -8,6 +8,7 @@ import {
   type TechnologyCategory,
 } from "@/content/technologies";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Reveal from "@/components/motion/Reveal";
 
 export default function Technologies() {
   const { language, t } = useLanguage();
@@ -24,14 +25,19 @@ export default function Technologies() {
       aria-labelledby="technologies-title"
     >
       <div className="shell">
-        <div className="section-heading">
+        <Reveal className="section-heading" delay={40}>
           <div>
             <p className="eyebrow">{t.skillsLabel}</p>
             <h2 id="technologies-title">{t.skillsTitle}</h2>
           </div>
           <p className="skills-intro">{t.skillsIntro}</p>
-        </div>
-        <div className="technology-filters" role="group" aria-label={t.technologyFilterLabel}>
+        </Reveal>
+        <Reveal
+          className="technology-filters"
+          role="group"
+          ariaLabel={t.technologyFilterLabel}
+          delay={90}
+        >
           {technologyCategories.map(category => (
             <button
               key={category}
@@ -44,7 +50,7 @@ export default function Technologies() {
               {t.technologyFilters[category]}
             </button>
           ))}
-        </div>
+        </Reveal>
         <p className="visually-hidden" role="status" aria-live="polite">
           {language === "br"
             ? `${visibleTechnologies.length} tecnologias exibidas.`
@@ -54,7 +60,12 @@ export default function Technologies() {
           {visibleTechnologies.map(technology => {
             const iconColor = `#${technology.icon.hex}`;
             return (
-              <li key={technology.id} className="technology-card">
+              <Reveal
+                as="li"
+                key={technology.id}
+                className="technology-card"
+                delay={120}
+              >
                 <div className="technology-icon" style={{ color: iconColor }}>
                   <svg
                     viewBox="0 0 24 24"
@@ -69,14 +80,16 @@ export default function Technologies() {
                 <span className="technology-category">
                   {t.technologyFilters[technology.category]}
                 </span>
-              </li>
+              </Reveal>
             );
           })}
         </ul>
-        <section
+        <Reveal
+          as="section"
           id="github"
           className="github-section"
-          aria-labelledby="github-title"
+          ariaLabelledBy="github-title"
+          delay={180}
         >
           <div>
             <Github size={25} aria-hidden="true" />
@@ -109,7 +122,7 @@ export default function Technologies() {
               </li>
             ))}
           </ul>
-        </section>
+        </Reveal>
       </div>
     </section>
   );

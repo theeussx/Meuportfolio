@@ -4,6 +4,7 @@ import { CopyButton } from "@/components/arc/copy-button/copy-button";
 import { Button } from "@/components/ui/button";
 import { identity, serviceIds, type ServiceId } from "@/content/portfolio";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Reveal from "@/components/motion/Reveal";
 import {
   createQuoteDraft,
   quoteCopy,
@@ -127,7 +128,7 @@ export default function Contact({ preset }: { preset: QuotePreset | null }) {
       tabIndex={-1}
     >
       <div className="shell contact-layout">
-        <div className="contact-intro">
+        <Reveal className="contact-intro" delay={40}>
           <p className="eyebrow">{t.contactLabel}</p>
           <h2 id="contact-title">
             {t.contactTitle[0]}
@@ -154,8 +155,8 @@ export default function Contact({ preset }: { preset: QuotePreset | null }) {
               />
             </div>
           </div>
-        </div>
-        <div>
+        </Reveal>
+        <Reveal delay={120}>
           <form
             ref={form}
             className="quote-form"
@@ -258,7 +259,7 @@ export default function Contact({ preset }: { preset: QuotePreset | null }) {
           <p className="privacy-note" id="privacidade">
             {copy.privacy}
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

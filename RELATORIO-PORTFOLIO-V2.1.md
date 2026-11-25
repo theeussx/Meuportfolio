@@ -10,6 +10,8 @@ A camada de movimento agora usa `Reveal.tsx` com `IntersectionObserver`, fallbac
 
 O hero preserva o carregamento imediato da fotografia, com `srcSet`, dimensões explícitas, `fetchPriority` e preload HTML com `imagesrcset`, `imagesizes` e `fetchpriority`. O header ganhou estado refinado durante o scroll e barra de progresso baseada em `transform`. O menu mobile recebe foco inicial, ciclo de foco por Tab/Shift+Tab, Escape, restauração de foco e fechamento ao navegar. A troca de tema usa View Transition API quando disponível, mas mantém fallback imediato e captura falhas da API sem impedir a alteração de tema.
 
+Nesta rodada, o `Reveal` foi aplicado de fato além do hero: cabeçalhos e projetos, linhas de serviço e processo, filtros e cartões de tecnologia, bloco GitHub, narrativa e certificados da seção Sobre e as duas colunas do contato agora entram progressivamente ao alcançar a viewport. O componente aceita elementos semânticos (`article`, `section` e `li`) para não introduzir wrappers que quebrem os grids. O prerender final contém 36 instâncias de Reveal e zero classes `motion-ready`, mantendo o SSR visível.
+
 Também foram aplicados ajustes de semântica no hero com `figure`/`figcaption`, alt descritivo, região de status curta para filtros de tecnologias, navegação incluindo Tecnologias, CSP com hash do JSON-LD e cache de assets públicos. O `vite.config.ts` deixou de aceitar hosts arbitrários e permite apenas hosts locais e `.manus.computer` no preview.
 
 ## Segurança e escopo deliberado

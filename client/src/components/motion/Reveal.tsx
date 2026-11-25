@@ -11,12 +11,24 @@ type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  as?: "div" | "article" | "section" | "li";
+  dataProject?: string;
+  id?: string;
+  role?: string;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
 };
 
 export default function Reveal({
   children,
   className = "",
   delay = 0,
+  as = "div",
+  dataProject,
+  id,
+  role,
+  ariaLabel,
+  ariaLabelledBy,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
@@ -51,13 +63,19 @@ export default function Reveal({
     return () => observer.disconnect();
   }, [reducedMotion]);
 
+  const Component = as;
   return (
-    <div
-      ref={ref}
+    <Component
+      ref={ref as never}
+      id={id}
+      data-project={dataProject}
+      role={role}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledBy}
       className={`motion-reveal ${ready ? "motion-ready" : ""} ${visible ? "is-visible" : ""} ${className}`.trim()}
       style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
     >
       {children}
-    </div>
+    </Component>
   );
 }

@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { projects } from "@/content/projects";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Reveal from "@/components/motion/Reveal";
 
 type Project = (typeof projects)[number];
 
@@ -223,29 +224,36 @@ export default function Projects() {
       tabIndex={-1}
     >
       <div className="shell">
-        <div className="section-heading">
+        <Reveal className="section-heading" delay={40}>
           <div>
             <p className="eyebrow">{t.selected}</p>
             <h2 id="projects-title">{t.workTitle}</h2>
           </div>
           <p>{t.workIntro}</p>
-        </div>
+        </Reveal>
         {featured && (
-          <article className="project-feature" data-project={featured.id}>
+          <Reveal
+            as="article"
+            className="project-feature"
+            dataProject={featured.id}
+            delay={110}
+          >
             <ProjectGallery project={featured} />
             <ProjectStory project={featured} />
-          </article>
+          </Reveal>
         )}
         <div className="project-pair">
           {others.map(project => (
-            <article
+            <Reveal
+              as="article"
               className="project-secondary"
-              data-project={project.id}
+              dataProject={project.id}
               key={project.id}
+              delay={160}
             >
               <ProjectGallery project={project} />
               <ProjectStory project={project} />
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

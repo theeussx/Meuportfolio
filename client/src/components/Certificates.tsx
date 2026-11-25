@@ -1,14 +1,17 @@
 import { ArrowUpRight, FileText } from "lucide-react";
 import { certificates } from "@/content/portfolio";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Reveal from "@/components/motion/Reveal";
 
 export default function Certificates() {
   const { t } = useLanguage();
   return (
-    <section
+    <Reveal
+      as="section"
       id="certificados"
       className="certificate-section"
-      aria-labelledby="certificates-title"
+      ariaLabelledBy="certificates-title"
+      delay={160}
     >
       <h3 id="certificates-title">{t.credentials}</h3>
       <ul>
@@ -41,6 +44,6 @@ export default function Certificates() {
           );
         })}
       </ul>
-    </section>
+    </Reveal>
   );
 }
