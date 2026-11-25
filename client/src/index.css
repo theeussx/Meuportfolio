@@ -35,6 +35,11 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --quick: 170ms;
   --enter: 320ms;
+  --motion-instant: 100ms;
+  --motion-micro: 180ms;
+  --motion-standard: 320ms;
+  --motion-reveal: 560ms;
+  --motion-cinematic: 820ms;
 }
 
 :root[data-theme="light"] {
@@ -75,6 +80,26 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--motion-cinematic);
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-new(root) {
+  animation-name: theme-reveal;
+  z-index: 1;
+}
+::view-transition-old(root) {
+  z-index: 0;
+}
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0% at 92% 5%);
+  }
+  to {
+    clip-path: circle(150% at 92% 5%);
+  }
 }
 body:has(dialog[open]) {
   overflow: hidden;
@@ -118,6 +143,17 @@ figure {
 }
 p {
   text-wrap: pretty;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 .shell {
   width: min(100% - (2 * var(--gutter)), 76rem);
@@ -253,6 +289,25 @@ h2 {
   top: 0;
   border-bottom: 1px solid var(--border);
   background: var(--background);
+  transition:
+    background-color var(--motion-standard) var(--ease-out),
+    box-shadow var(--motion-standard) var(--ease-out);
+}
+.header.is-scrolled {
+  box-shadow: 0 0.7rem 2rem rgb(5 10 20 / 0.12);
+  background: color-mix(in srgb, var(--background) 92%, transparent);
+  backdrop-filter: blur(14px);
+}
+.reading-progress {
+  position: absolute;
+  z-index: 1;
+  inset: auto auto 0 0;
+  display: block;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
 }
 .header-inner {
   display: flex;
@@ -340,6 +395,46 @@ html:not(.js) .site-nav {
   gap: clamp(2.1rem, 5vw, 5.5rem);
   padding-block: clamp(3.25rem, 6.9vw, 7rem) clamp(3rem, 6.5vw, 6rem);
 }
+.motion-reveal {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--motion-reveal) var(--ease-out) var(--reveal-delay),
+    transform var(--motion-reveal) var(--ease-out) var(--reveal-delay);
+}
+.motion-reveal.motion-ready:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(1.1rem);
+}
+.motion-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.hero-body.motion-reveal.motion-ready.is-visible > * {
+  animation: hero-stagger var(--motion-reveal) var(--ease-out) both;
+}
+.hero-body.motion-reveal.motion-ready.is-visible h1 {
+  animation-delay: 70ms;
+}
+.hero-body.motion-reveal.motion-ready.is-visible .hero-summary {
+  animation-delay: 140ms;
+}
+.hero-body.motion-reveal.motion-ready.is-visible .hero-actions {
+  animation-delay: 210ms;
+}
+.hero-body.motion-reveal.motion-ready.is-visible .hero-github {
+  animation-delay: 280ms;
+}
+@keyframes hero-stagger {
+  from {
+    opacity: 0;
+    transform: translateY(0.65rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 .hero-role {
   display: flex;
   align-items: center;
@@ -384,6 +479,13 @@ html:not(.js) .site-nav {
   width: min(100%, 30rem);
   justify-self: start;
   margin-block: 0;
+}
+.portrait-reveal {
+  width: min(100%, 30rem);
+  justify-self: start;
+}
+.portrait-reveal .portrait {
+  width: 100%;
 }
 .portrait-frame {
   overflow: hidden;
@@ -729,7 +831,11 @@ html:not(.js) .site-nav {
   color: var(--text-secondary);
   font-size: 0.84rem;
   font-weight: 600;
-  transition: border-color var(--quick), background-color var(--quick), color var(--quick), transform var(--quick);
+  transition:
+    border-color var(--quick),
+    background-color var(--quick),
+    color var(--quick),
+    transform var(--quick);
 }
 .technology-filter:hover,
 .technology-filter[data-active="true"] {
@@ -756,9 +862,16 @@ html:not(.js) .site-nav {
   border: 1px solid var(--border);
   border-radius: 0.55rem;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 58%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--accent) 9%, transparent),
+      transparent 58%
+    ),
     var(--background);
-  transition: border-color var(--quick), transform var(--quick), box-shadow var(--quick);
+  transition:
+    border-color var(--quick),
+    transform var(--quick),
+    box-shadow var(--quick);
 }
 .technology-card:hover {
   border-color: color-mix(in srgb, var(--accent) 72%, var(--border));
@@ -1099,6 +1212,9 @@ html:not(.js) .site-nav {
   .portrait {
     justify-self: end;
   }
+  .portrait-reveal {
+    justify-self: end;
+  }
   .project-feature {
     grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
     align-items: start;
@@ -1179,6 +1295,9 @@ html:not(.js) .site-nav {
   .portrait {
     max-width: 25.6rem;
   }
+  .portrait-reveal {
+    max-width: 25.6rem;
+  }
   .portrait-frame img {
     aspect-ratio: 1 / 1.13;
   }
@@ -1191,6 +1310,18 @@ html:not(.js) .site-nav {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .motion-reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .motion-reveal.motion-ready:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
   }
 }
 

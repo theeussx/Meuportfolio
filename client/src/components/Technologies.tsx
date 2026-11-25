@@ -45,7 +45,12 @@ export default function Technologies() {
             </button>
           ))}
         </div>
-        <ul className="technology-grid" aria-live="polite">
+        <p className="visually-hidden" role="status" aria-live="polite">
+          {language === "br"
+            ? `${visibleTechnologies.length} tecnologias exibidas.`
+            : `${visibleTechnologies.length} technologies shown.`}
+        </p>
+        <ul className="technology-grid">
           {visibleTechnologies.map(technology => {
             const iconColor = `#${technology.icon.hex}`;
             return (

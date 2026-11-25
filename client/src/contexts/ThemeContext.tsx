@@ -23,6 +23,23 @@ function applyTheme(theme: Theme) {
     ?.setAttribute("content", theme === "dark" ? "#0d1016" : "#f5f6f8");
 }
 
+function transitionTheme(next: Theme) {
+  const update = () => applyTheme(next);
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const viewTransitionDocument = document as Document & {
+    startViewTransition?: (callback: () => void) => unknown;
+  };
+  if (reduced || !viewTransitionDocument.startViewTransition) {
+    update();
+    return;
+  }
+  try {
+    viewTransitionDocument.startViewTransition(update);
+  } catch {
+    update();
+  }
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("dark");
 
@@ -32,7 +49,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   function setTheme(next: Theme) {
-    applyTheme(next);
+    transitionTheme(next);
     setThemeState(next);
     try {
       localStorage.setItem(storageKey, next);

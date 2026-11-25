@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: true,
+    allowedHosts: ["localhost", "127.0.0.1", ".manus.computer"],
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {

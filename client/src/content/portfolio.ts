@@ -7,7 +7,7 @@ export const identity = {
   instagram: "https://instagram.com/theeussx_",
 } as const;
 
-export const navigation = ["projetos", "servicos", "sobre"] as const;
+export const navigation = ["projetos", "servicos", "tecnologias", "sobre"] as const;
 
 export const serviceIds = [
   "web",
@@ -24,7 +24,12 @@ export const languages = {
     skip: "Pular para o conteúdo",
     navLabel: "Navegação principal",
     menu: "Menu",
-    nav: { projetos: "Projetos", servicos: "Serviços", sobre: "Sobre" },
+    nav: {
+      projetos: "Projetos",
+      servicos: "Serviços",
+      tecnologias: "Tecnologias",
+      sobre: "Sobre",
+    },
     contact: "Contato",
     language: "BR · Mudar idioma para inglês",
     switchToLight: "Mudar para o tema claro",
@@ -179,7 +184,12 @@ export const languages = {
     skip: "Skip to content",
     navLabel: "Main navigation",
     menu: "Menu",
-    nav: { projetos: "Work", servicos: "Services", sobre: "About" },
+    nav: {
+      projetos: "Work",
+      servicos: "Services",
+      tecnologias: "Tech",
+      sobre: "About",
+    },
     contact: "Contact",
     language: "EN · Switch language to Portuguese",
     switchToLight: "Switch to light mode",

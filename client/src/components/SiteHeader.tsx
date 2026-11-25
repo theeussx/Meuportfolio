@@ -20,6 +20,8 @@ export default function SiteHeader() {
   const { theme, setTheme } = useTheme();
   const active = useActiveSection();
   const [expanded, setExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const menuButton = useRef<HTMLButtonElement>(null);
   const firstMenuLink = useRef<HTMLAnchorElement>(null);
 
@@ -36,6 +38,27 @@ export default function SiteHeader() {
     return () => desktop.removeEventListener("change", onDesktop);
   }, []);
 
+  useEffect(() => {
+    let frame = 0;
+    function updateScrollState() {
+      frame = 0;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrolled(window.scrollY > 18);
+      setProgress(max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0);
+    }
+    function schedule() {
+      if (frame === 0) frame = requestAnimationFrame(updateScrollState);
+    }
+    updateScrollState();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+
   function closeAfterNavigation(id: string) {
     setExpanded(false);
     document.getElementById(id)?.focus({ preventScroll: true });
@@ -47,11 +70,30 @@ export default function SiteHeader() {
         {t.skip}
       </a>
       <header
-        className="header"
+        className={`header ${scrolled ? "is-scrolled" : ""}`}
         onKeyDown={event => {
-          if (expanded && event.key === "Escape") {
+          if (!expanded) return;
+          if (event.key === "Escape") {
             setExpanded(false);
             menuButton.current?.focus();
+            return;
+          }
+          if (event.key === "Tab") {
+            const focusable = Array.from(
+              event.currentTarget.querySelectorAll<HTMLElement>(
+                'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+              )
+            ).filter(element => element.getClientRects().length > 0);
+            if (focusable.length === 0) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (!event.shiftKey && event.target === last) {
+              event.preventDefault();
+              first.focus();
+            } else if (event.shiftKey && event.target === first) {
+              event.preventDefault();
+              last.focus();
+            }
           }
         }}
         onBlur={event => {
@@ -64,6 +106,11 @@ export default function SiteHeader() {
           }
         }}
       >
+        <span
+          className="reading-progress"
+          style={{ transform: `scaleX(${progress / 100})` }}
+          aria-hidden="true"
+        />
         <div className="shell header-inner">
           <Brand />
           <nav
@@ -104,7 +151,7 @@ export default function SiteHeader() {
             </button>
             <ThemeSwitch
               theme={theme}
-              onThemeChange={setTheme}
+              onThemeChange={next => setTheme(next)}
               label={theme === "dark" ? t.switchToLight : t.switchToDark}
               iconOnly
               className="theme-action"
