@@ -17,7 +17,12 @@ import {
   siVite,
 } from "simple-icons";
 
-export const technologyCategories = ["all", "frontend", "backend", "tools"] as const;
+export const technologyCategories = [
+  "all",
+  "frontend",
+  "backend",
+  "tools",
+] as const;
 export type TechnologyCategory = (typeof technologyCategories)[number];
 
 type Localized = { br: string; en: string };
@@ -127,8 +132,8 @@ export const technologies: readonly Technology[] = [
     icon: siRust,
     title: "Rust",
     description: {
-      br: "Camada nativa usada na integração desktop do ZittoDB.",
-      en: "Native layer used in the ZittoDB desktop integration.",
+      br: "Código nativo para ferramentas e integrações de alto desempenho.",
+      en: "Native code for high-performance tools and integrations.",
     },
   },
   {
@@ -190,4 +195,5 @@ export const technologies: readonly Technology[] = [
       br: "Containers para organizar ambientes e serviços locais.",
       en: "Containers for organizing local environments and services.",
     },
-  },];
+  },
+];

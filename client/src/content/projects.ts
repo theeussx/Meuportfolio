@@ -31,141 +31,107 @@ export interface Project {
 
 export const projects: readonly Project[] = [
   {
-    id: "pterodroid",
-    name: "Pterodroid",
-    technologies: ["React", "Node.js", "Express", "Socket.IO", "SQLite"],
-    repository: "https://github.com/theeussx/pterodroid",
-    links: [{ kind: "docs", url: "https://pterodroid-doc.vercel.app/" }],
+    id: "wardizitto",
+    name: "Wardizitto",
+    technologies: ["Node.js", "TypeScript", "Discord.js", "MySQL"],
+    repository: "https://github.com/theeussx/Wardizitto",
+    links: [],
     media: [
       {
-        src: "/media/pterodroid-dashboard.webp",
-        width: 1360,
-        height: 820,
+        src: "/media/wardizitto.png",
+        width: 1024,
+        height: 1024,
         alt: {
-          br: "Painel Pterodroid com a lista de serviços e a visão de recursos do sistema.",
-          en: "Pterodroid dashboard showing the service list and system resources.",
+          br: "Arte do Wardizitto, um bot Discord com uma figura encapuzada e olhos azuis brilhantes.",
+          en: "Wardizitto artwork showing a hooded figure with bright blue eyes.",
         },
         caption: {
-          br: "Painel executado localmente com serviços de exemplo.",
-          en: "Dashboard running locally with sample services.",
-        },
-      },
-      {
-        src: "/media/pterodroid-services.webp",
-        width: 1360,
-        height: 820,
-        alt: {
-          br: "Tela de gerenciamento com os serviços cadastrados e ações de configuração.",
-          en: "Management screen with registered services and configuration controls.",
-        },
-        caption: {
-          br: "Gerenciamento de serviços no painel local.",
-          en: "Service management in the local dashboard.",
+          br: "Identidade visual do bot modular para comunidades Discord.",
+          en: "Visual identity for the modular bot built for Discord communities.",
         },
       },
     ],
     copy: {
       br: {
-        category: "Infraestrutura · Projeto open source",
+        category: "Bot Discord · Projeto open source",
         status: "Código e documentação públicos",
         summary:
-          "Um painel de hospedagem pessoal que roda do Android ao servidor Linux.",
+          "Um bot Discord modular para administração, economia, moderação e comunidades.",
         context:
-          "Gerenciar bots, APIs e sites pelo celular costuma exigir vários comandos e ferramentas. O Pterodroid reúne essas rotinas em uma interface web que roda em Termux, Ubuntu proot e Linux.",
+          "O Wardizitto v2 reorganiza o runtime com TypeScript estrito, módulos funcionais e fronteiras inspiradas em Clean Architecture. Configuração, banco, permissões, rate limiting, logs e roteamento do Discord ficam em serviços centralizados e testáveis.",
         contribution:
-          "Desenvolvi o painel e a API, integrando o gerenciamento de processos, a persistência em SQLite e o acompanhamento de logs em tempo real.",
+          "Estruturei um bot modular com foco em comunidades, separando regras de negócio, infraestrutura e apresentação para facilitar manutenção e evolução.",
         features: [
-          "Criação e controle de serviços com modelos de configuração.",
-          "Logs em tempo real, monitoramento de recursos e arquivos por serviço.",
-          "Gerenciamento de instâncias locais de PostgreSQL e MariaDB.",
+          "Administração, moderação, tickets e economia com comandos slash e prefixo.",
+          "Persistência em MySQL com migrations versionadas e proteção contra concorrência.",
+          "Rate limit, cooldowns, logs estruturados e integrações opcionais com Groq e VirusTotal.",
         ],
       },
       en: {
-        category: "Infrastructure · Open source project",
+        category: "Discord bot · Open source project",
         status: "Public source and documentation",
         summary:
-          "A personal hosting dashboard that runs on Android and Linux servers.",
+          "A modular Discord bot for administration, economy, moderation, and communities.",
         context:
-          "Running bots, APIs, and websites from a phone often means juggling several tools and commands. Pterodroid brings these routines into a web interface for Termux, Ubuntu proot, and Linux.",
+          "Wardizitto v2 rebuilds the runtime around strict TypeScript, functional modules, and boundaries inspired by Clean Architecture. Configuration, database access, permissions, rate limiting, logging, and Discord routing live in centralized, testable services.",
         contribution:
-          "I built the dashboard and API, integrating process management, SQLite storage, and real-time log streaming.",
+          "I structured a modular bot for communities, separating business rules, infrastructure, and presentation to keep the project easier to maintain and evolve.",
         features: [
-          "Service setup and controls with reusable configuration templates.",
-          "Live logs, system monitoring, and per-service file management.",
-          "Management of local PostgreSQL and MariaDB instances.",
+          "Administration, moderation, tickets, and economy through slash and prefix commands.",
+          "MySQL persistence with versioned migrations and concurrency protection.",
+          "Rate limiting, cooldowns, structured logs, and optional Groq and VirusTotal integrations.",
         ],
       },
     },
   },
   {
-    id: "zittodb",
-    name: "ZittoDB",
-    technologies: ["React", "TypeScript", "Tauri", "Rust", "ADB"],
-    repository: "https://github.com/theeussx/zittodb",
-    links: [
-      {
-        kind: "download",
-        url: "https://github.com/theeussx/zittodb/releases/latest",
-      },
-      { kind: "docs", url: "https://zittodb.vercel.app/" },
-    ],
+    id: "meuportfolio",
+    name: "Meuportfolio",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    repository: "https://github.com/theeussx/Meuportfolio",
+    links: [{ kind: "live", url: "https://theeussx.vercel.app/" }],
     media: [
       {
-        src: "/media/zittodb-demo.webp",
-        width: 1360,
-        height: 820,
+        src: "/media/compartilhamento.jpg",
+        width: 1200,
+        height: 630,
         alt: {
-          br: "Tela inicial do ZittoDB com dispositivos Android de exemplo e seus estados de conexão.",
-          en: "ZittoDB home screen with sample Android devices and their connection states.",
+          br: "Imagem de apresentação do portfólio Meuportfolio com o título Sites, sistemas e automações.",
+          en: "Meuportfolio presentation image with the title Sites, sistemas e automações.",
         },
         caption: {
-          br: "Interface do projeto em modo demonstração com dispositivos simulados.",
-          en: "Project interface in demo mode with simulated devices.",
-        },
-      },
-      {
-        src: "/media/zittodb-device.webp",
-        width: 1360,
-        height: 820,
-        alt: {
-          br: "Visão geral de um aparelho Android de exemplo selecionado no ZittoDB.",
-          en: "Overview of a sample Android device selected in ZittoDB.",
-        },
-        caption: {
-          br: "Detalhes do dispositivo no modo demonstração.",
-          en: "Device details in demo mode.",
+          br: "Apresentação visual do portfólio de desenvolvimento web, sistemas e automações.",
+          en: "Visual introduction to the portfolio for web development, systems, and automations.",
         },
       },
     ],
     copy: {
       br: {
-        category: "Aplicativo desktop · Projeto open source",
-        status: "Versão 1.0.0 disponível para Linux",
-        summary:
-          "Uma interface para gerenciar dispositivos Android no Linux com ADB, scrcpy e Fastboot.",
+        category: "Portfólio · Projeto open source",
+        status: "Site publicado e código público",
+        summary: "Meu portfólio de desenvolvimento web, automações e sistemas.",
         context:
-          "Acompanhar dispositivos, arquivos e logs do Android pela linha de comando exige alternar entre várias ferramentas. O ZittoDB reúne essas rotinas em um aplicativo desktop com execução e histórico locais.",
+          "O site reúne projetos, serviços, tecnologias, formação e formas de contato em uma experiência responsiva com suporte a tema claro e escuro e conteúdo em português e inglês.",
         contribution:
-          "Desenvolvi a interface React e integrei a bridge do Tauri com a camada Rust, que valida os parâmetros e executa cada operação no dispositivo selecionado.",
+          "Planejei e implementei a interface, os componentes reutilizáveis, a navegação por seções e a apresentação dos projetos de código aberto.",
         features: [
-          "Descoberta de dispositivos por USB ou Wi-Fi, com visão geral do aparelho.",
-          "Espelhamento via scrcpy, gerenciamento de aplicativos e transferência de arquivos.",
-          "Shell, leitura de logs e histórico local de operações.",
+          "Seções de projetos, serviços, tecnologias, sobre e contato.",
+          "Tema claro/escuro, internacionalização e navegação responsiva.",
+          "Galeria de projetos, certificados e links para código e demonstrações.",
         ],
       },
       en: {
-        category: "Desktop app · Open source project",
-        status: "Version 1.0.0 available for Linux",
-        summary:
-          "An interface for managing Android devices on Linux with ADB, scrcpy, and Fastboot.",
+        category: "Portfolio · Open source project",
+        status: "Published site and public source",
+        summary: "My portfolio for web development, automations, and systems.",
         context:
-          "Working with Android devices, files, and logs on the command line involves switching between tools. ZittoDB consolidates those tasks in one desktop app with local execution and activity history.",
+          "The site brings together projects, services, technologies, education, and contact options in a responsive experience with light and dark themes and Portuguese and English content.",
         contribution:
-          "I built the React interface and integrated the Tauri bridge with the Rust layer, which validates parameters and runs operations against the selected device.",
+          "I planned and implemented the interface, reusable components, section navigation, and presentation of open source projects.",
         features: [
-          "USB and Wi-Fi device discovery with a device overview.",
-          "Screen mirroring through scrcpy, app management, and file transfer.",
-          "Shell access, log viewing, and local operation history.",
+          "Project, services, technologies, about, and contact sections.",
+          "Light/dark theme, internationalization, and responsive navigation.",
+          "Project gallery, certificates, and links to source code and demos.",
         ],
       },
     },
