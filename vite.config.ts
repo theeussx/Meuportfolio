@@ -11,6 +11,9 @@ export default defineConfig({
       "@shared": path.resolve(import.meta.dirname, "shared"),
     },
   },
+  server: {
+    allowedHosts: ["localhost", "127.0.0.1", ".manus.computer"],
+  },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
     outDir: path.resolve(import.meta.dirname, "dist"),

@@ -1,0 +1,157 @@
+.button {
+  display: inline-flex;
+  width: max-content;
+  max-width: 100%;
+  min-height: var(--control-height-sm);
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 0 var(--space-3);
+  background: var(--surface);
+  color: var(--foreground);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:hover:not(:disabled) {
+    background: var(--surface-muted);
+  }
+  .plain:hover:not(:disabled) {
+    color: var(--foreground);
+  }
+}
+/* Touch gets a fill while the finger is down, since there is no hover to show the button is live. */
+@media (hover: none) {
+  .button:active:not(:disabled) {
+    background: var(--surface-muted);
+  }
+  .plain:active:not(:disabled) {
+    color: var(--foreground);
+  }
+}
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+/* Only the glyph takes the state color; the label stays in the foreground color. */
+.glyph {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  color: inherit;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.glyph[data-state="copied"] {
+  color: var(--success);
+}
+.glyph[data-state="error"] {
+  color: var(--danger);
+}
+.glyphLayer {
+  display: grid;
+  grid-area: 1 / 1;
+  place-items: center;
+}
+.glyphLayer svg {
+  display: block;
+  overflow: visible;
+}
+/* Invisible labels reserve the width of the longest feedback message. */
+.label {
+  display: inline-grid;
+  min-width: 0;
+  align-items: center;
+  justify-items: center;
+  white-space: nowrap;
+}
+.sizer,
+.word {
+  grid-area: 1 / 1;
+  padding-block: 2px;
+  white-space: nowrap;
+}
+.sizer {
+  visibility: hidden;
+}
+.word {
+  display: block;
+}
+.iconOnly {
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+}
+@media (pointer: coarse) {
+  .button {
+    min-height: 44px;
+  }
+}
+.plain {
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-secondary);
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .button:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+  .glyph:not([data-state="idle"]) .glyphLayer {
+    animation: glyph-enter var(--duration-fast) var(--ease-standard) both;
+  }
+  .check {
+    stroke-dasharray: 1;
+    animation: draw-check var(--duration-standard) var(--ease-standard) both;
+  }
+  .button:not([data-copy-state="idle"]) .word {
+    animation: word-enter var(--duration-fast) var(--ease-standard) both;
+  }
+}
+@keyframes glyph-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.78);
+  }
+}
+@keyframes draw-check {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes word-enter {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .glyph {
+    transition: none;
+  }
+}
