@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://theeussx.online//sitemap.xml
+Sitemap: https://theeussx.online/sitemap.xml

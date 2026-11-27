@@ -89,7 +89,7 @@ export const projects: readonly Project[] = [
     name: "Meuportfolio",
     technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
     repository: "https://github.com/theeussx/Meuportfolio",
-    links: [{ kind: "live", url: "https://theeussx.vercel.app/" }],
+    links: [{ kind: "live", url: "https://theeussx.online/" }],
     media: [
       {
         src: "/media/compartilhamento.jpg",

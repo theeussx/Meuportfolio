@@ -2,7 +2,7 @@ export const identity = {
   name: "Mateus Henrique",
   brand: "Theeussx",
   email: "mateushenrique6968@gmail.com",
-  website: "https://theeussx.vercel.app",
+  website: "https://theeussx.online",
   github: "https://github.com/theeussx",
   instagram: "https://instagram.com/theeussx_",
 } as const;
